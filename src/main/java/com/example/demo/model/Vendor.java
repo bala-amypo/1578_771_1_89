@@ -13,5 +13,13 @@ public class Vendor{
     public long getId{
         return id;
     }
-    public String 
+    public String getVendorName{
+        return vendorName;
+    }
+    public String getContactEmail{
+        return contactEmail;
+    }
+    public String getAddress{
+        return address;
+    }
 }
