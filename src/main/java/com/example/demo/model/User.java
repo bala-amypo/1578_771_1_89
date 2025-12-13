@@ -12,5 +12,19 @@ public class User{
         this.password=password;
         this.role=role;
     }
-    public 
+    public long getId{
+        return id;
+    }
+    public String fullName{
+        return fullName;
+    }
+    public String email{
+        return email;
+    }
+    public String password{
+        return password;
+    }
+    public String role{
+        return role;
+    }
 }
