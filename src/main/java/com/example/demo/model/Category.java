@@ -13,5 +13,10 @@ public class Category{
     public long getId(){
         return id;
     }
-    public S
+    public String getCategoryName(){
+        return categoryName;
+    }
+    public String getDescription(){
+        return description;
+    }
 }
