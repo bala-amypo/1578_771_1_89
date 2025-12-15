@@ -4,7 +4,8 @@ public class Category{
     private long id;
     private String categoryName;
     private String description;
-
+ 
+    public Category(){}
     public Category(String categoryName,String description){
         this.categoryName=categoryName;
         this.description=description;

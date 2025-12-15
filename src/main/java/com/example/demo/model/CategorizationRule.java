@@ -5,7 +5,8 @@ public class CategorizationRule{
     private String keyword;
     private String matchType;
     private int priority;
-
+ 
+    public CategorizationRule(){}
     public CategorizationRule(String keyword,String matchType,int priority){
         this.keyword=keyword;
         this.matchType=matchType;

@@ -6,6 +6,7 @@ public class Vendor{
     private String contactEmail;
     private String address;
 
+    public Vendor(){}
     public Vendor(String vendorName,String contactEmail,String address){
         this.vendorName=vendorName;
         this.contactEmail=contactEmail;
