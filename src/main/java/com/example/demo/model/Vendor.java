@@ -6,22 +6,42 @@ public class Vendor{
     private String contactEmail;
     private String address;
 
-    public Vendor(long id,String vendorName,String contactEmail,String address){
-        this.id=id;
+    public Vendor(String vendorName,String contactEmail,String address){
         this.vendorName=vendorName;
         this.contactEmail=contactEmail;
         this.address=address;
     }
-    public long getId(){
+
+    public long getId() {
         return id;
     }
-    public String getVendorName(){
+
+    public String getVendorName() {
         return vendorName;
     }
-    public String getContactEmail(){
+
+    public String getContactEmail() {
         return contactEmail;
     }
-    public String getAddress(){
+
+    public String getAddress() {
         return address;
     }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setVendorName(String vendorName) {
+        this.vendorName = vendorName;
+    }
+
+    public void setContactEmail(String contactEmail) {
+        this.contactEmail = contactEmail;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    
 }

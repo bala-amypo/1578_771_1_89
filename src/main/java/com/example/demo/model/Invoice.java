@@ -3,10 +3,10 @@ package com.example.demo.model;
 public class Invoice{
     private long id;
     private String invoiceNumber;
-    private double amount;
+    private Double amount;
     private String description;
     
-    public Invoice(long id,String invoiceNumber,double amount,String description){
+    public Invoice(String invoiceNumber,double amount,String description){
         this.invoiceNumber=invoiceNumber;
         this.amount=amount;
         this.description=description;
@@ -14,13 +14,26 @@ public class Invoice{
     public long getId(){
         return id;
     }
-    public String getInvoiceNumber(){
+    public String getInvoiceNumber() {
         return invoiceNumber;
     }
-    public double getAmount(){
+    public Double getAmount() {
         return amount;
     }
-    public String getDescription(){
+    public String getDescription() {
         return description;
     }
+    public void setId(long id) {
+        this.id = id;
+    }
+    public void setInvoiceNumber(String invoiceNumber) {
+        this.invoiceNumber = invoiceNumber;
+    }
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
 }
