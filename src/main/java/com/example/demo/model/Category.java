@@ -5,8 +5,7 @@ public class Category{
     private String categoryName;
     private String description;
 
-    public Category(long id,String categoryName,String description){
-        this.id=id;
+    public Category(String categoryName,String description){
         this.categoryName=categoryName;
         this.description=description;
     }
@@ -18,5 +17,14 @@ public class Category{
     }
     public String getDescription(){
         return description;
+    }
+    public void setId(long id) {
+        this.id = id;
+    }
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

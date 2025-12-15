@@ -7,7 +7,6 @@ public class Invoice{
     private String description;
     
     public Invoice(long id,String invoiceNumber,double amount,String description){
-        this.id=id;
         this.invoiceNumber=invoiceNumber;
         this.amount=amount;
         this.description=description;

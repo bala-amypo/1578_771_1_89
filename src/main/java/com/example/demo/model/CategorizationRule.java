@@ -6,11 +6,26 @@ public class CategorizationRule{
     private String matchType;
     private int priority;
 
-    public CategorizationRule(long id,String keyword,String matchType,int priority){
-        this.id=id;
+    public CategorizationRule(String keyword,String matchType,int priority){
         this.keyword=keyword;
         this.matchType=matchType;
         this.priority=priority;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
+
+    public void setMatchType(String matchType) {
+        this.matchType = matchType;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 
     public long getId(){
