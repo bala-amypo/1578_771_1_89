@@ -1,12 +1,15 @@
 package com.example.demo.model;
 
 public class User{
-    @GeneratedValue(strategy=)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
     private String fullName;
+    @Column(unique=true)
     private String email;
+    @Size(min=8)
     private String password;
     private String role;
+    private LocalDateTime createdAt;
 
     public User(){}
     public User(String fullName,String email,String password,String role){
