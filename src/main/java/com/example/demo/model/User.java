@@ -1,14 +1,16 @@
 package com.example.demo.model;
 
+import java.time.LocalDateTime;
 public class User{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
     private String fullName;
     @Column(unique=true)
     private String email;
-    @Size(min=8)
+    @Min(8)
     private String password;
     private String role;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private LocalDateTime createdAt;
 
     public User(){}
