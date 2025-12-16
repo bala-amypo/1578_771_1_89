@@ -9,13 +9,19 @@ public class Invoice{
     private String description;
     @Column(nullable=true)
     private Category category;
-
+    private User uploadedBy;
+    private LocalDateTime uploadedAt;
     
     public Invoice(){}
-    public Invoice(String invoiceNumber,double amount,String description){
+    public Invoice(Vendor vendor,String invoiceNumber,Double amount,LocalDate invoiceDate,String description,Category category,User uploadedBy,LocalDateTime uploadedAt){
+        this.vendor=vendor;
         this.invoiceNumber=invoiceNumber;
         this.amount=amount;
+        this.invoiceDate=invoiceDate;
         this.description=description;
+        this.category=category;
+        this.uploadedBy=uploadedBy;
+        this.uploadedAt=uploadedAt;
     }
     public long getId(){
         return id;
