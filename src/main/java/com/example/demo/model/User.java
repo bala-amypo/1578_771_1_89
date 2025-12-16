@@ -64,7 +64,7 @@ public class User{
     public void setRole(String role) {
         this.role = role;
     }
-     public LocalDateTime getCreate() {
+     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
