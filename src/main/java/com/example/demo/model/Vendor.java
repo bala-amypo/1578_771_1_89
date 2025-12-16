@@ -1,10 +1,18 @@
 package com.example.demo.model;
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.validation.
+import java.time.LocalDateTime;
 
 public class Vendor{
     private long id;
+    @Column(unique=true)
     private String vendorName;
+    @Email
     private String contactEmail;
     private String address;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private LocalDateTime createdAt;
 
     public Vendor(){}
     public Vendor(String vendorName,String contactEmail,String address){

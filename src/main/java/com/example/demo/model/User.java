@@ -7,7 +7,7 @@ public class User{
     private String fullName;
     @Column(unique=true)
     private String email;
-    @Min(8)
+    @Size(min=8)
     private String password;
     private String role;
     @GeneratedValue(strategy=GenerationType.IDENTITY)
