@@ -1,5 +1,5 @@
 package com.example.demo.model;
-
+@Entity
 public class Invoice{
     private long id;
     private Vendor vendor;
