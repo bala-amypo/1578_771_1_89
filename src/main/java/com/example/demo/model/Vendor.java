@@ -15,10 +15,11 @@ public class Vendor{
     private LocalDateTime createdAt;
 
     public Vendor(){}
-    public Vendor(String vendorName,String contactEmail,String address){
+    public Vendor(String vendorName,String contactEmail,String address,LocalDateTime createdAt){
         this.vendorName=vendorName;
         this.contactEmail=contactEmail;
         this.address=address;
+        this.createdAt=createdAt;
     }
 
     public long getId() {
@@ -52,5 +53,11 @@ public class Vendor{
     public void setAddress(String address) {
         this.address = address;
     }
-    
+     public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt=createdAt;
+    }
 }

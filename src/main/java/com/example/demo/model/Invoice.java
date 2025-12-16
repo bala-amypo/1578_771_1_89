@@ -2,10 +2,14 @@ package com.example.demo.model;
 
 public class Invoice{
     private long id;
-    
+    private Vendor vendor;
     private String invoiceNumber;
     private Double amount;
+    private LocalDate invoiceDate;
     private String description;
+    @Column(nullable=true)
+    private Category category;
+
     
     public Invoice(){}
     public Invoice(String invoiceNumber,double amount,String description){
