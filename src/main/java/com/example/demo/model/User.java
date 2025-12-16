@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 public class User{
+    @GeneratedValue(strategy=)
     private long id;
     private String fullName;
     private String email;
