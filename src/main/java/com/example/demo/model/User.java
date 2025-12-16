@@ -1,5 +1,8 @@
 package com.example.demo.model;
-
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
 public class User{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -14,11 +17,12 @@ public class User{
     private LocalDateTime createdAt;
 
     public User(){}
-    public User(String fullName,String email,String password,String role){
+    public User(String fullName,String email,String password,String role,LocalDateTime createdAt){
         this.fullName=fullName;
         this.email=email;
         this.password=password;
         this.role=role;
+        this.createdAt=createdAt;
     }
 
     public long getId() {
@@ -60,6 +64,12 @@ public class User{
     public void setRole(String role) {
         this.role = role;
     }
+     public LocalDateTime getCreate() {
+        return createdAt;
+    }
 
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt=createdAt;
+    }
     
 }

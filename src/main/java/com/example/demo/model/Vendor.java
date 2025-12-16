@@ -1,7 +1,7 @@
 package com.example.demo.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
-import jakarta.validation.
+import jakarta.validation.constraints.Email;
 import java.time.LocalDateTime;
 
 public class Vendor{

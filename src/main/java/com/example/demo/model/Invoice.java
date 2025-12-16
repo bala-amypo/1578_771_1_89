@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 public class Invoice{
     private long id;
+    
     private String invoiceNumber;
     private Double amount;
     private String description;
