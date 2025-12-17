@@ -22,7 +22,7 @@ public class VendorServiceImpl implements VendorService{
        Optional<Vendor> optionalVendor=vendorRepository.findById(id);
        return optionalVendor.orElse(null);
     }
-    List<Vendor> getAllVendors(){
+    public List<Vendor> getAllVendors(){
        return vendorRepository.findAll();
     }
 }

@@ -30,7 +30,7 @@ public class VendorController{
         return vendorService.getAllVendors();
     }
     @GetMapping("/{vendorId}")
-    public ResponseEntity<Vendor> getById(@PathVariable Long vendorId){
+    public ResponseEntity<Vendor> getById(@PathVariable Long id){
         return vendorService.getVendor(id);
     }
 }
