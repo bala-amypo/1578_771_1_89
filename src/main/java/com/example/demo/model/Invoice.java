@@ -1,9 +1,13 @@
 package com.example.demo.model;
-@Entity
+import jakarta.persistence.Column;
+import jakarta.validation.constraints.Size;
+import java.time.LocalDateTime;
 public class Invoice{
     private long id;
     private Vendor vendor;
+    @Column(unique=true)
     private String invoiceNumber;
+    @Size(min=1)
     private Double amount;
     private LocalDate invoiceDate;
     private String description;
