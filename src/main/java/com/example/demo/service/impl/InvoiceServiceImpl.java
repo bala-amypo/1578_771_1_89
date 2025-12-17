@@ -19,8 +19,8 @@ public class InvoiceServiceImpl implements InvoiceService{
     }
     @Override
     public Invoice categorizeInvoice(Long invoiceId){
-       User u=invoiceRepository.findById(invoiceId);
-       return invoiceRepository.save(u);
+       Invoice invoice=invoiceRepository.findById(invoiceId);
+       return invoiceRepository.save(invoice);
     }
     @Override
     public List<Invoice> getInvoicesByUser(Long userId){
