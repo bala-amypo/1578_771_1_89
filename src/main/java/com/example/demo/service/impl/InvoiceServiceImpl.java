@@ -15,11 +15,12 @@ public class InvoiceServiceImpl implements InvoiceService{
     InvoiceRepository invoiceRepository;
     @Override
     public Invoice uploadInvoice(Long userId,Long vendorId,Invoice invoice){
-       return invoiceRepository.save(userId,vendorId,invoice);
+       
     }
     @Override
     public Invoice categorizeInvoice(Long invoiceId){
-       return invoiceRepository.save(invoiceId);
+       User u=invoiceRepository.findById(invoiceId);
+       return invoiceRepository.save(u);
     }
     @Override
     public List<Invoice> getInvoicesByUser(Long userId){
