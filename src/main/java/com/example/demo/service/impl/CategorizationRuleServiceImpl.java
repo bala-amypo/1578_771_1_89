@@ -1,6 +1,3 @@
-CategorizationRule createRule(Long categoryId,CategorizationRule rule);
-    List<CategorizationRule> getRulesByCategory(Long categoryId);
-    void deleteRule(Long ruleId);
 package com.example.demo.service.impl;
 
 import java.util.List;
@@ -9,23 +6,27 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.model.User;
-import com.example.demo.repository.UserRepository;
-import com.example.demo.service.UserService;
+import com.example.demo.model.CategorizationRule;
+import com.example.demo.repository.CategorizationRuleRepository;
+import com.example.demo.service.CategorizationRuleService;
 @Service
-public class UserServiceImpl implements UserService{
+public class CategorizationRuleServiceImpl implements CategorizationRuleService{
     @Autowired
-    UserRepository userRepository;
+    CategorizationRuleRepository categorizationRuleRepository;
     @Override
-    public User registerUser(User user){
-       return userRepository.save(user);
+    public CategorizationRule createRule(Long categoryId,CategorizationRule rule){
+       return categorizationRuleRepository.save(categoryId,rule);
     }
     @Override
-    public User findByEmail(String email){
-       Optional<User> optionalUser=userRepository.findById(email);
-       return optionalUser.orElse(other: null);
+    public List<CategorizationRule> getRulesByCategory(Long categoryId){
+       return categorizationRuleRepository.findById(categoryId);
     }
-    public List<User> getAllUsers(){
-       return userRepository.findAll();
+    @Override
+    public void deleteRule(Long ruleId){
+        if(categorizationRuleRepository.existsById(ruleId)){
+            categorizationRuleRepository.deleteById(ruleId);
+            return true;
+        }
+        return false;
     }
 }

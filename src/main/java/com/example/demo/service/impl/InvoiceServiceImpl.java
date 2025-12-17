@@ -12,19 +12,18 @@ import com.example.demo.service.InvoiceService;
 @Service
 public class InvoiceServiceImpl implements InvoiceService{
     @Autowired
-    InvoiceRepository InvoiceRepository;
+    InvoiceRepository invoiceRepository;
     @Override
     public Invoice uploadInvoice(Long userId,Long vendorId,Invoice invoice){
-       return InvoiceRepository.save(userId,vendorId,invoice);
+       return invoiceRepository.save(userId,vendorId,invoice);
     }
     @Override
     public Invoice categorizeInvoice(Long invoiceId){
-       return InvoiceRepository.save(invoiceId);
+       return invoiceRepository.save(invoiceId);
     }
     @Override
     public List<Invoice> getInvoicesByUser(Long userId){
-       Optional<Invoice> optionalInvoice=invoiceRepository.findById(userId);
-       return optionalInvoice.orElse(other: null);
+       return invoiceRepository.findById(userId);
     }
     public Invoice getInvoice(Long invoiceId);{
        Optional<Invoice> optionalInvoice=invoiceRepository.findById(invoiceId);
