@@ -22,8 +22,8 @@ public class CategorizationRuleController{
     CategorizationRuleService categorizationRuleService;
     @PostMapping("/category/{categoryId}")
     public ResponseEntity<CategorizationRule> createAll(@RequestBody Long categoryId,CategorizationRule rule){
-        CategorizationRule c=categorizationRuleService.createRule(vendor);
-        return ResponseEntity.status(201).body(v);
+        CategorizationRule c=categorizationRuleService.createRule(categoryId,rule);
+        return ResponseEntity.status(201).body(c);
     }
     @GetMapping("/category/{categoryId}")
     public List<CategorizationRule>getAll(){
