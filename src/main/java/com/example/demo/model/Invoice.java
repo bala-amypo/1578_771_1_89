@@ -3,8 +3,10 @@ import jakarta.persistence.Column;
 import jakarta.validation.constraints.Size;
 import jakarta.persistence.GeneratedValue;
 import java.time.LocalDateTime;
+@Entity
 public class Invoice{
-     @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
     private Vendor vendor;
     @Column(unique=true)

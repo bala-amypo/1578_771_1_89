@@ -3,8 +3,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.validation.constraints.Email;
 import java.time.LocalDateTime;
-
+@Entity
 public class Vendor{
+    @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
     @Column(unique=true)

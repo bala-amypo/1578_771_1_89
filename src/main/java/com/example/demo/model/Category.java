@@ -2,7 +2,9 @@ package com.example.demo.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import java.time.LocalDateTime;
+@Entity
 public class Category{
+    @Id
      @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
     @Column(unique=true)
