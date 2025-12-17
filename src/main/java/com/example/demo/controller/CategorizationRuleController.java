@@ -26,11 +26,17 @@ public class CategorizationRuleController{
         return ResponseEntity.status(201).body(c);
     }
     @GetMapping("/category/{categoryId}")
-    public List<CategorizationRule>getAll(){
-        return categorizationRuleService.getAllVendors();
+    public List<CategorizationRule>getAll(Long categoryId){
+        return categorizationRuleService.getRulesByCategory(categoryId);
     }
     @DeleteMapping("/{ruleId}")
-    public ResponseEntity<CategorizationRule> getById(@PathVariable Long vendorId){
-        return categorizationRuleService.getVendor(vendorId);
+    public ResponseEntity<CategorizationRule> deleteAll(@PathVariable Long ruleId){
+        boolean isDeleted=categorizationRuleService.deleteRule(ruleId);
+        if(isDeleted){
+            return ResponseEntity.status(201).body("successful");
+        }
+        else{
+            return ResponseEntity.status(404).build();
+        }
     }
 }
