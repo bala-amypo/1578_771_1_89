@@ -18,7 +18,7 @@ public class VendorServiceImpl implements VendorService{
        return vendorRepository.save(vendor);
     }
     @Override
-    public Vendor getVendor(Long vendorId){
+    public Vendor getVendor(Long id){
        Optional<Vendor> optionalVendor=vendorRepository.findById(id);
        return optionalVendor.orElse(other: null);
     }
