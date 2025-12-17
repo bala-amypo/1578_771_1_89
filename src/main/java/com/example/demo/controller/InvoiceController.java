@@ -31,11 +31,11 @@ public class InvoiceController{
         return ResponseEntity.status(201).body(i);
     }
     @GetMapping("/user/{userId}")
-    public List<Invoice>getAll(Long invoiceId){
+    public List<Invoice>getAll(@PathVariable Long userId){
         return invoiceService.getInvoicesByUser(userId);
     }
     @GetMapping("/{invoiceId}")
-    public ResponseEntity<Vendor> getById(@PathVariable Long vendorId){
-        return vendorService.getVendor(vendorId);
+    public ResponseEntity<Invoice> getById(@PathVariable Long invoiceId){
+        return invoiceService.getInvoice(invoiceId);
     }
 }
