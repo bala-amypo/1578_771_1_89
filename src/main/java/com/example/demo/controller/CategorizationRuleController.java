@@ -21,8 +21,8 @@ public class CategorizationRuleController{
     @Autowired
     CategorizationRuleService categorizationRuleService;
     @PostMapping("/category/{categoryId}")
-    public ResponseEntity<CategorizationRule> createAll(@RequestBody Vendor vendor){
-        CategorizationRule c=categorizationRuleService.createVendor(vendor);
+    public ResponseEntity<CategorizationRule> createAll(@RequestBody Long categoryId,CategorizationRule rule){
+        CategorizationRule c=categorizationRuleService.createRule(vendor);
         return ResponseEntity.status(201).body(v);
     }
     @GetMapping("/category/{categoryId}")
