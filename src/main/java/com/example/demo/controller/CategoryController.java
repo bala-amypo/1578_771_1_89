@@ -12,25 +12,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.model.Vendor;
-import com.example.demo.service.VendorService;
+import com.example.demo.model.Category;
+import com.example.demo.service.CategoryService;
 
 @RestController
-@RequestMapping("/api/vendors")
-public class VendorController{
+@RequestMapping("/api/categories")
+public class CategoryController{
     @Autowired
-    VendorService vendorService;
+    CategoryService categoryService;
     @PostMapping
-    public ResponseEntity<Vendor> createAll(@RequestBody Vendor vendor){
-        Vendor v=vendorService.createVendor(vendor);
-        return ResponseEntity.status(201).body(v);
+    public ResponseEntity<Category> createAll(@RequestBody Vendor vendor){
+        Category c=categoryService.createCategory(category);
+        return ResponseEntity.status(201).body(c);
     }
     @GetMapping
-    public List<Vendor>getAll(){
-        return vendorService.getAllVendors();
+    public List<Category>getAll(){
+        return categoryService.getAllCategories();
     }
-    @GetMapping("/{vendorId}")
-    public ResponseEntity<Vendor> getById(@PathVariable Long vendorId){
-        return vendorService.getVendor(vendorId);
+    @GetMapping("/{id}")
+    public ResponseEntity<Category> getById(@PathVariable Long id){
+        return categoryService.getCategory(id);
     }
 }
