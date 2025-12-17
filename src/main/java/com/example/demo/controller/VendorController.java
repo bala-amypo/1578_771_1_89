@@ -16,17 +16,21 @@ import com.example.demo.model.Vendor;
 import com.example.demo.service.VendorService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/vendors")
 public class VendorController{
     @Autowired
     VendorService vendorService;
-
-    @GetMapping("/vendors")
+    @PostMapping
+    public ResponseEntity<Vendor> createAll(@RequestBody Vendor vendor){
+        Vendor v=vendorService.createVendor(vendor);
+        return ResponseEntity.status(201).body(v);
+    }
+    @GetMapping
     public List<Vendor>getAll(){
         return vendorService.getAllVendors();
     }
-    @PostMapping
-    public ResponseEntity<Vendor> createAll(@RequestBody Vendor vendor){
-        Vendor
+    @GetMapping("/{vendorId}")
+    public ResponseEntity<Vendor> getById(@PathVariable Long vendorId){
+        return vendorService.getVendor(vendorId);
     }
 }
