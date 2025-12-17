@@ -10,19 +10,19 @@ import com.example.demo.model.Category;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.service.CategoryService;
 @Service
-public class CategoryServiceImpl implements UseService{
+public class CategoryServiceImpl implements CategoryService{
     @Autowired
-    UserRepository userRepository;
+    CategoryRepository categoryRepository;
     @Override
     public Category createCategory(Category category){
-       return userRepository.save(user);
+       return categoryRepository.save(category);
     }
     @Override
     public Category getCategory(Long id){
-       Optional<User> optionalUser=userRepository.findById(email);
-       return optionalUser.orElse(other: null);
+       Optional<Category> optionalCategory=categoryRepository.findById(id);
+       return optionalCategory.orElse(other: null);
     }
     public List<Category> getAllCategories(){
-       return userRepository.findAll();
+       return categoryRepository.findAll();
     }
 }
