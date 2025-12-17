@@ -21,7 +21,7 @@ public class CategoryController{
     @Autowired
     CategoryService categoryService;
     @PostMapping
-    public ResponseEntity<Category> createAll(@RequestBody Vendor vendor){
+    public ResponseEntity<Category> createAll(@RequestBody Category category){
         Category c=categoryService.createCategory(category);
         return ResponseEntity.status(201).body(c);
     }
