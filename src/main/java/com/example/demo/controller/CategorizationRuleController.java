@@ -12,25 +12,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.model.Vendor;
-import com.example.demo.service.VendorService;
+import com.example.demo.model.CategorizationRule;
+import com.example.demo.service.CategorizationRuleService;
 
 @RestController
-@RequestMapping("/api/vendors")
-public class VendorController{
+@RequestMapping("/api/rules")
+public class CategorizationRuleController{
     @Autowired
-    VendorService vendorService;
-    @PostMapping
-    public ResponseEntity<Vendor> createAll(@RequestBody Vendor vendor){
-        Vendor v=vendorService.createVendor(vendor);
+    CategorizationRuleService categorizationRuleService;
+    @PostMapping("/category/{categoryId}")
+    public ResponseEntity<CategorizationRule> createAll(@RequestBody Vendor vendor){
+        CategorizationRule c=categorizationRuleService.createVendor(vendor);
         return ResponseEntity.status(201).body(v);
     }
-    @GetMapping
-    public List<Vendor>getAll(){
-        return vendorService.getAllVendors();
+    @GetMapping("/category/{categoryId}")
+    public List<CategorizationRule>getAll(){
+        return categorizationRuleService.getAllVendors();
     }
-    @GetMapping("/{vendorId}")
-    public ResponseEntity<Vendor> getById(@PathVariable Long vendorId){
-        return vendorService.getVendor(vendorId);
+    @DeleteMapping("/{ruleId}")
+    public ResponseEntity<CategorizationRule> getById(@PathVariable Long vendorId){
+        return categorizationRuleService.getVendor(vendorId);
     }
 }
