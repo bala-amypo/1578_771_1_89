@@ -16,7 +16,6 @@ public class User{
     @Size(min=8)
     private String password;
     private String role;
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private LocalDateTime createdAt;
 
     public User(){}
