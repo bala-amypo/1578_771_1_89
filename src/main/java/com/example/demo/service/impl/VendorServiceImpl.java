@@ -1,3 +1,28 @@
-Vendor createVendor(Vendor vendor);
-    Vendor getVendor(Long vendorId);
-    List<Vendor> getAllVendors();
+package com.example.demo.service.impl;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.model.Vendor;
+import com.example.demo.repository.VendorRepository;
+import com.example.demo.service.VendorService;
+@Service
+public class VendorServiceImpl implements VendorService{
+    @Autowired
+    VendorRepository vendorRepository;
+    @Override
+    public Vendor createVendor(Vendor vendor){
+       return vendorRepository.save(vendor);
+    }
+    @Override
+    public Vendor getVendor(Long vendorId){
+       Optional<Vendor> optionalVendor=vendorRepository.findById(vendorId);
+       return optionalVendor.orElse(other: null);
+    }
+    List<Vendor> getAllVendors(){
+       return vendorRepository.findAll();
+    }
+}
