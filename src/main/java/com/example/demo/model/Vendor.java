@@ -3,6 +3,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.validation.constraints.Email;
 import java.time.LocalDateTime;
+import jakarta.persistence.Entity;
 @Entity
 public class Vendor{
     @Id
