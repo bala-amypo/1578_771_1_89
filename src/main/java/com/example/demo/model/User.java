@@ -1,7 +1,10 @@
 package com.example.demo.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
-import jakarta.validation.constraints.Email;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
 @Entity
