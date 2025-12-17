@@ -4,7 +4,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
+@Entity
+@Table(name="users")
 public class User{
+    @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
     private String fullName;
