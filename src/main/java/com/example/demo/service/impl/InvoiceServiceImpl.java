@@ -23,10 +23,11 @@ public class InvoiceServiceImpl implements InvoiceService{
     }
     @Override
     public List<Invoice> getInvoicesByUser(Long userId){
-       Optional<User> optionalUser=userRepository.findById(email);
-       return optionalUser.orElse(other: null);
+       Optional<Invoice> optionalInvoice=invoiceRepository.findById(userId);
+       return optionalInvoice.orElse(other: null);
     }
-    public Invoice getInvoice(Long invoiceid);{
-       return userRepository.findAll();
+    public Invoice getInvoice(Long invoiceId);{
+       Optional<Invoice> optionalInvoice=invoiceRepository.findById(invoiceId);
+       return optionalInvoice.orElse(other: null);
     }
 }
