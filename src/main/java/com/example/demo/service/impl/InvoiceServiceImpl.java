@@ -10,16 +10,16 @@ import com.example.demo.model.Invoice;
 import com.example.demo.repository.InvoiceRepository;
 import com.example.demo.service.InvoiceService;
 @Service
-public class UserServiceImpl implements UserService{
+public class InvoiceServiceImpl implements InvoiceService{
     @Autowired
-    UserRepository userRepository;
+    InvoiceRepository InvoiceRepository;
     @Override
     public Invoice uploadInvoice(Long userId,Long vendorId,Invoice invoice){
-        
+       return InvoiceRepository.save(userId,vendorId,invoice);
     }
     @Override
     public Invoice categorizeInvoice(Long invoiceId){
-       return userRepository.save(user);
+       return InvoiceRepository.save(invoiceId);
     }
     @Override
     public List<Invoice> getInvoicesByUser(Long userId){
