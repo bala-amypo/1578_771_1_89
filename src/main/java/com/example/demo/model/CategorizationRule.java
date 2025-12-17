@@ -1,10 +1,16 @@
 package com.example.demo.model;
-
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import java.time.LocalDateTime;
 public class CategorizationRule{
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
+    private Category category;
+    @Column(nullable=false)
     private String keyword;
     private String matchType;
     private int priority;
+    private LocalDateTime createdAt;
  
     public CategorizationRule(){}
     public CategorizationRule(String keyword,String matchType,int priority){

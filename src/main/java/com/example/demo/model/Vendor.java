@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Email;
 import java.time.LocalDateTime;
 
 public class Vendor{
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
     @Column(unique=true)
     private String vendorName;

@@ -1,7 +1,11 @@
 package com.example.demo.model;
-
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import java.time.LocalDateTime;
 public class Category{
+     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
+    @Column(unique=true)
     private String categoryName;
     private String description;
     private LocalDateTime createdAt;
