@@ -19,17 +19,22 @@ import com.example.demo.service.InvoiceService;
 @RequestMapping("/api/invoices")
 public class InvoiceController{
     @Autowired
-    InvoiceService InvoiceService;
-    @PostMapping("/")
-    public ResponseEntity<Vendor> createAll(@RequestBody Vendor vendor){
-        Vendor v=vendorService.createVendor(vendor);
-        return ResponseEntity.status(201).body(v);
+    InvoiceService invoiceService;
+    @PostMapping("/upload/{userId}/{vendorId}")
+    public ResponseEntity<Invoice> createAll(@RequestBody Long userId,Long vendorId,Invoice invoice){
+        Invoice i=invoiceService.uploadInvoice(userId,vendorId,invoice);
+        return ResponseEntity.status(201).body(i);
     }
-    @GetMapping
-    public List<Vendor>getAll(){
-        return vendorService.getAllVendors();
+    @PostMapping("/categorize/{invoiceId}")
+    public ResponseEntity<Invoice> createAll(@RequestBody Long invoiceId){
+        Invoice i=invoiceService.categorizeInvoice(Long invoiceId)
+        return ResponseEntity.status(201).body(i);
     }
-    @GetMapping("/{vendorId}")
+    @GetMapping("/user/{userId}")
+    public List<Invoice>getAll(Long invoiceId){
+        return invoiceService.getInvoicesByUser(userId);
+    }
+    @GetMapping("/{invoiceId}")
     public ResponseEntity<Vendor> getById(@PathVariable Long vendorId){
         return vendorService.getVendor(vendorId);
     }
