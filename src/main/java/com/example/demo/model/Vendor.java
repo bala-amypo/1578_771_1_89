@@ -13,7 +13,6 @@ public class Vendor{
     @Email
     private String contactEmail;
     private String address;
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private LocalDateTime createdAt;
 
     public Vendor(){}
