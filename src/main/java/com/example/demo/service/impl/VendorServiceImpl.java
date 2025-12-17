@@ -20,7 +20,7 @@ public class VendorServiceImpl implements VendorService{
     @Override
     public Vendor getVendor(Long id){
        Optional<Vendor> optionalVendor=vendorRepository.findById(id);
-       return optionalVendor.orElse(other: null);
+       return optionalVendor.orElse(null);
     }
     List<Vendor> getAllVendors(){
        return vendorRepository.findAll();
