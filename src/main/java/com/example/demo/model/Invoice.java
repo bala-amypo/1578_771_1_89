@@ -10,7 +10,7 @@ import com.example.demo.model.Category;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="invoices",uniqueConstraints=@UniqueConstraint (columnNames={"vendorId","invoiceNumber"}))
+@Table(name="invoices",uniqueConstraints=@UniqueConstraint (columnNames={"vendor_Id","invoice_Number"}))
 
 public class Invoice{
     @Id

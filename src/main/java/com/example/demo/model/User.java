@@ -28,11 +28,11 @@ public class User{
     @ManyToMany
     @JoinTable(
     name="user_vendor",
-    joinColumns=@JoinColumn(name="user_id"),
-    inverseJoinColumns=@JoinColumn(name="vendor_id")
+    joinColumns=@JoinColumn(name="user_Id"),
+    inverseJoinColumns=@JoinColumn(name="vendor_Id")
     )
     private List<Vendor> favouriteVendors= new ArrayList<>();
-    @OneToMany(mappedBy="uploadedBy")
+    @OneToMany(mappedBy="uploaded_by")
     @JsonIgnore
     private List<Invoice> invoices=new ArrayList<>();
     public User(){}
