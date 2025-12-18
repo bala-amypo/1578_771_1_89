@@ -4,6 +4,8 @@ import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ArrayList;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="users",uniqueConstraints=@UniqueConstraint (columnNames="email"))
 public class User{

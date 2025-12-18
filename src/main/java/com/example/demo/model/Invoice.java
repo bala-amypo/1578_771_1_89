@@ -7,6 +7,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import com.example.demo.model.User;
 import com.example.demo.model.Category;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name="invoices",uniqueConstraints=@UniqueConstraint (columnNames={"vendorId","invoiceNumber"}))
 

@@ -7,6 +7,8 @@ import java.time.LocalDateTime;
 import jakarta.persistence.Entity;
 import java.util.List;
 import java.util.ArrayList;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Vendor{
