@@ -4,7 +4,7 @@ import jakarta.validation.constraints.Size;
 import jakarta.persistence.GeneratedValue;
 import java.time.LocalDateTime;
 @Entity
-@Table(name="invoices",uniqueConstraints=@UniqueConstraint 
+@Table(name="invoices",uniqueConstraints=@UniqueConstraint (columnNames={"vendorId","invoiceNumber"})
 public class Invoice{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
