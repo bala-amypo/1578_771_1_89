@@ -2,6 +2,9 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 import jakarta.persistence.GeneratedValue;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.ArrayList;
+
 @Entity
 public class Category{
     @Id
@@ -11,7 +14,9 @@ public class Category{
     private String categoryName;
     private String description;
     private LocalDateTime createdAt;
-    @
+    @OneToMany(mappedBy="category")
+    @JsonIgnore
+    private List<Invoice> invoices=new ArrayList<>();
     public Category(){}
     public Category(String categoryName,String description,LocalDateTime createdAt){
         this.categoryName=categoryName;
