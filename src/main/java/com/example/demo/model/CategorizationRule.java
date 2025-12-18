@@ -9,7 +9,7 @@ import com.example.demo.model.Category;
 public class CategorizationRule{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long id;
+    private long ruleId;
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="category_Id",nullable=true)
     @JsonIgnore
@@ -30,8 +30,8 @@ public class CategorizationRule{
     public void setCategory(Category category){
         this.category=category;
     }
-    public void setId(long id) {
-        this.id = id;
+    public void setRuleId(long ruleId) {
+        this.ruleId = ruleId;
     }
 
     public void setKeyword(String keyword) {
@@ -46,8 +46,8 @@ public class CategorizationRule{
         this.priority = priority;
     }
 
-    public long getId(){
-        return id;
+    public long getRuleId(){
+        return ruleId;
     }
     public Category getCategory(){
         return category;
