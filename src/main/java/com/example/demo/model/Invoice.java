@@ -16,7 +16,6 @@ public class Invoice{
     private long invoiceId;
     @ManyToOne(fetch=FetchType.EAGER)
     @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-    @JoinColumn(name="vendorId")
     private Vendor vendor;
     @Column(unique=true,nullable=false)
     private String invoiceNumber;
@@ -26,11 +25,9 @@ public class Invoice{
     private String description;
     @ManyToOne(fetch=FetchType.EAGER)
     @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-    @JoinColumn(name="categoryId")
     private Category category;
     @ManyToOne(fetch=FetchType.EAGER)
     @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-    @JoinColumn(name="uploadedBy")
     private User uploadedBy;
     private LocalDateTime uploadedAt;
     @PrePersist
