@@ -32,7 +32,7 @@ public class CategorizationRuleController{
     }
     @DeleteMapping("/{ruleId}")
     public ResponseEntity<CategorizationRule> deleteAll(@PathVariable Long ruleId){
-       CategorizationRule c=categorizationRuleService.deleteRule(ruleId);
-        return ResponseEntity.status(200).body(c);
+        categorizationRuleService.deleteRule(ruleId);
+        return ResponseEntity.status(204).body("Deleted Successfully");
     }
 }
