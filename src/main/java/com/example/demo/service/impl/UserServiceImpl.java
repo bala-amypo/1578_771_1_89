@@ -13,9 +13,19 @@ import com.example.demo.service.UserService;
 public class UserServiceImpl implements UserService{
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    PasswordEncoder passwordEncoder;
     @Override
-    public User registerUser(User user){
-       return userRepository.save(user);
+    public User registerUser(User user) {
+
+        if (userRepository.existsByEmail(user.getEmail())) {
+            throw new IllegalArgumentException(
+                    "Email already in use: " + user.getEmail()
+            );
+        }
+
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return userRepository.save(user);
     }
     @Override
     public User findByEmail(String email){
