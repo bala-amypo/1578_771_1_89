@@ -18,7 +18,7 @@ public class Invoice{
     @JsonIgnore
     private long invoiceId;
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="vendor_Id",nullable=false)
+    @JoinColumn(name="vendor_Id",nullable=true)
     @JsonIgnore
     private Vendor vendor;
     @Column(name="invoice_Number",nullable=false)
