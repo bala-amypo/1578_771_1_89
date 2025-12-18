@@ -4,16 +4,17 @@ import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.List;
 @Entity
-@Table(name="users")
+@Table(name="users",uniqueConstraints=@UniqueConstraint (columnNames="email"))
 public class User{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long userId;
     private String fullName;
-    @Column(unique=true)
+    @Column(nullable=false,unique=true)
     private String email;
     @Size(min=8)
     private String password;
+    @Column(nullable=false)
     private String role;
     private LocalDateTime createdAt;
     @PrePersist
@@ -26,7 +27,8 @@ public class User{
     // joinColumns=@JoinColumn(name="user_id"),
     // inverseJoinColumns=@JoinColumn(name="vendor_id")
     // )
-    // private List<Vendor> vendors;
+    // private List<Vendor> vendors= new ArrayList<>();
+    @OnetoMany(mappedBy=uploadedby)
     public User(){}
     public User(String fullName,String email,String password,String role,LocalDateTime createdAt){
         this.fullName=fullName;
