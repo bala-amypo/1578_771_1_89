@@ -23,7 +23,7 @@ public class Vendor{
     public void onCreate(){
     this.createdAt=LocalDateTime.now();
     }
-    @ManytoMany(mappedBy="favouriteVendors")
+    @ManyToMany(mappedBy="favouriteVendors")
     private List<User> users=new ArrayList<>();
 
     public Vendor(){}
