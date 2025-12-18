@@ -57,7 +57,7 @@ public class User{
     }
 
     public void setUserId(long userId) {
-        this.userId = id;
+        this.userId = userId;
     }
 
     public void setFullName(String fullName) {
