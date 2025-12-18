@@ -21,7 +21,7 @@ public class Invoice{
     @JoinColumn(name="vendor_Id",nullable=false)
     @JsonIgnore
     private Vendor vendor;
-    @Column(unique=true,nullable=false)
+    @Column(name="invoice_Number",nullable=false)
     private String invoiceNumber;
     @Positive
     private Double amount;
