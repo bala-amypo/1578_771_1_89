@@ -21,8 +21,15 @@ public class Invoice{
     @ManyToOne
     @JoinColumn(name="category_id")
     private Category category;
+    @ManyToOne
+    @JoinColumn(name="uploadedBy")
     private User uploadedBy;
     private LocalDateTime uploadedAt;
+    @PrePersist
+    public void onCreate(){
+      this.uploadedAt=LocalDateTime.now();
+    }
+
     
     public Invoice(){}
     public Invoice(Vendor vendor,String invoiceNumber,Double amount,LocalDate invoiceDate,String description,Category category,User uploadedBy,LocalDateTime uploadedAt){
