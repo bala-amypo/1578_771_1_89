@@ -13,12 +13,23 @@ import ord.springframework.web.bind.annotation.RestController;
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
 
-import jakarta.validation.valid;
+import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/auth/api/users")
 public class UserController{
     @Autowired
     UserService userService;
     @PostMapping
-    public ResponseEntity<User> createAll(@Valid @R)
+    public ResponseEntity<User> createAll(@Valid @RequestBoy User user){
+        User st=userService.registerUser(user);
+        return ResponseEntity.status(201).body(st);
+    }
+    @GetMapping
+    public List<User> getAll(){
+        return userService.getAllUsers();
+    }
+    @GetMapping(/{email})
+    public User getById(@Valid @PathVariable String email){
+        return userService.findByEmail(email);
+    }
 }
