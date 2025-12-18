@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+ 
 import com.example.demo.model.Invoice;
 import com.example.demo.repository.InvoiceRepository;
 import com.example.demo.model.User;
