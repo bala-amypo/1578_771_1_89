@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class User{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long id;
+    private long userId;
     private String fullName;
     @Column(nullable=false,unique=true)
     private String email;
@@ -41,8 +41,8 @@ public class User{
         this.createdAt=createdAt;
     }
 
-    public long getId() {
-        return id;
+    public long getUserId() {
+        return userId;
     }
 
     public String getFullName() {
@@ -61,8 +61,8 @@ public class User{
         return role;
     }
 
-    public void setUserId(long id) {
-        this.id = id;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     public void setFullName(String fullName) {

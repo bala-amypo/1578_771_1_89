@@ -3,8 +3,7 @@ package com.example.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.http.ResponseEntity;;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +15,7 @@ import com.example.demo.model.Vendor;
 import com.example.demo.service.VendorService;
 
 @RestController
-@RequestMapping("/api/vendors")
+@RequestMapping("/auth/api/vendors")
 public class VendorController{
     @Autowired
     VendorService vendorService;
@@ -30,7 +29,7 @@ public class VendorController{
         return vendorService.getAllVendors();
     }
     @GetMapping("/{vendorId}")
-    public Vendor getById(@Valid @PathVariable Long id){
-        return vendorService.getVendor(id);
+    public Vendor getById(@Valid @PathVariable Long vendorId){
+        return vendorService.getVendor(vendorId);
     }
 }

@@ -9,7 +9,7 @@ import jakarta.persistence.Entity;
 public class Vendor{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long id;
+    private long vendorId;
     @Column(unique=true)
     private String vendorName;
     @Email
@@ -25,8 +25,8 @@ public class Vendor{
         this.createdAt=createdAt;
     }
 
-    public long getId() {
-        return id;
+    public long getVendorId() {
+        return vendorId;
     }
 
     public String getVendorName() {
@@ -41,8 +41,8 @@ public class Vendor{
         return address;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setVendorId(long vendorId) {
+        this.vendorId = vendorId;
     }
 
     public void setVendorName(String vendorName) {
