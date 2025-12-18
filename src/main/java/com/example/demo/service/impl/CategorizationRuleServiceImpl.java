@@ -25,8 +25,6 @@ public class CategorizationRuleServiceImpl implements CategorizationRuleService{
     public void deleteRule(Long ruleId){
         if(categorizationRuleRepository.existsById(ruleId)){
             categorizationRuleRepository.deleteById(ruleId);
-            return true;
         }
-        return false;
     }
 }
