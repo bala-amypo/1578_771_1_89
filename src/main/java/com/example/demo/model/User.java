@@ -3,12 +3,13 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.ArrayList;
 @Entity
 @Table(name="users",uniqueConstraints=@UniqueConstraint (columnNames="email"))
 public class User{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long userId;
+    private long id;
     private String fullName;
     @Column(nullable=false,unique=true)
     private String email;
@@ -16,19 +17,20 @@ public class User{
     private String password;
     @Column(nullable=false)
     private String role;
-    private LocalDateTime createdAt;
-    @PrePersist
-    public void onCreate(){
-    this.createdAt=LocalDateTime.now();
-    }
     // @ManytoMany
     // @JoinTable(
     // name="user_vendor",
     // joinColumns=@JoinColumn(name="user_id"),
     // inverseJoinColumns=@JoinColumn(name="vendor_id")
     // )
-    // private List<Vendor> vendors= new ArrayList<>();
-    @OnetoMany(mappedBy=uploadedby)
+    // private List<Vendor> favouriteVendors= new ArrayList<>();
+    // @OnetoMany(mappedBy=uploadedby)
+    // private List<Invoice> invoices=new ArrayList<>();
+    private LocalDateTime createdAt;
+    @PrePersist
+    public void onCreate(){
+    this.createdAt=LocalDateTime.now();
+    }
     public User(){}
     public User(String fullName,String email,String password,String role,LocalDateTime createdAt){
         this.fullName=fullName;
@@ -38,8 +40,8 @@ public class User{
         this.createdAt=createdAt;
     }
 
-    public long getUserId() {
-        return userId;
+    public long getId() {
+        return id;
     }
 
     public String getFullName() {
@@ -58,8 +60,8 @@ public class User{
         return role;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setUserId(long id) {
+        this.id = id;
     }
 
     public void setFullName(String fullName) {
