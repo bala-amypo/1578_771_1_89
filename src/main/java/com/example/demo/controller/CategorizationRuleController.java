@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.CategorizationRule;
 import com.example.demo.service.CategorizationRuleService;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/rules")
