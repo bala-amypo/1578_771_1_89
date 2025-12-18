@@ -17,6 +17,12 @@ public class User{
     private String password;
     @Column(nullable=false)
     private String role;
+    private LocalDateTime createdAt;
+    @PrePersist
+    public void onCreate(){
+    this.createdAt=LocalDateTime.now();
+    }
+    
     // @ManytoMany
     // @JoinTable(
     // name="user_vendor",
@@ -26,11 +32,6 @@ public class User{
     // private List<Vendor> favouriteVendors= new ArrayList<>();
     // @OnetoMany(mappedBy=uploadedby)
     // private List<Invoice> invoices=new ArrayList<>();
-    private LocalDateTime createdAt;
-    @PrePersist
-    public void onCreate(){
-    this.createdAt=LocalDateTime.now();
-    }
     public User(){}
     public User(String fullName,String email,String password,String role,LocalDateTime createdAt){
         this.fullName=fullName;
