@@ -4,12 +4,13 @@ import jakarta.validation.constraints.Size;
 import jakarta.persistence.GeneratedValue;
 import java.time.LocalDateTime;
 @Entity
+@Table(name="invoices",uniqueConstraints=@UniqueConstraint 
 public class Invoice{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long invoiceId;
     @ManyToOne(optional=false)
-    @JoinColumn(name="vendor_id")
+    @JoinColumn(name="vendorId")
     private Vendor vendor;
     @Column(unique=true)
     private String invoiceNumber;
@@ -19,7 +20,7 @@ public class Invoice{
     private String description;
     @Column(nullable=true)
     @ManyToOne
-    @JoinColumn(name="category_id")
+    @JoinColumn(name="categoryId")
     private Category category;
     @ManyToOne
     @JoinColumn(name="uploadedBy")
@@ -42,8 +43,8 @@ public class Invoice{
         this.uploadedBy=uploadedBy;
         this.uploadedAt=uploadedAt;
     }
-    public long getId(){
-        return id;
+    public long getInvoiceId(){
+        return invoiceId;
     }
     public String getInvoiceNumber() {
         return invoiceNumber;
@@ -54,8 +55,8 @@ public class Invoice{
     public String getDescription() {
         return description;
     }
-    public void setId(long id) {
-        this.id = id;
+    public void setInvoiceId(long invoiceId) {
+        this.invoiceId = invoiceId;
     }
     public void setInvoiceNumber(String invoiceNumber) {
         this.invoiceNumber = invoiceNumber;
