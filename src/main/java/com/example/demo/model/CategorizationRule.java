@@ -7,6 +7,9 @@ public class CategorizationRule{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="category_Id",nullable=true)
+    @JsonIgnore
     private Category category;
     @Column(nullable=false)
     private String keyword;

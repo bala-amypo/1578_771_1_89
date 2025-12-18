@@ -9,12 +9,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Category{
     @Id
-     @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
     @Column(unique=true)
     private String categoryName;
     private String description;
     private LocalDateTime createdAt;
+    @OneToMany(mappedBy="category")
+    @JsonIgnore
+    private List<Invoice> invoices=new ArrayList<>();
     @OneToMany(mappedBy="category")
     @JsonIgnore
     private List<Invoice> invoices=new ArrayList<>();
