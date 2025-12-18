@@ -8,14 +8,15 @@ import java.time.LocalDateTime;
 import com.example.demo.model.User;
 import com.example.demo.model.Category;
 @Entity
-@Table(name="invoices")
-// ,uniqueConstraints=@UniqueConstraint (columnNames={"vendorId","invoiceNumber"}))
+@Table(name="invoices",uniqueConstraints=@UniqueConstraint (columnNames={"vendorId","invoiceNumber"}))
+
 public class Invoice{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long invoiceId;
-    // @ManyToOne(optional=false)
-    // @JoinColumn(name="vendorId")
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+    @JoinColumn(name="vendorId")
     private Vendor vendor;
     @Column(unique=true,nullable=false)
     private String invoiceNumber;
@@ -23,10 +24,12 @@ public class Invoice{
     private Double amount;
     private LocalDate invoiceDate;
     private String description;
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     @JoinColumn(name="categoryId")
     private Category category;
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     @JoinColumn(name="uploadedBy")
     private User uploadedBy;
     private LocalDateTime uploadedAt;
