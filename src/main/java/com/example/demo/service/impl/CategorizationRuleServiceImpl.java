@@ -7,15 +7,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.CategorizationRule;
+import com.example.demo.model.Category;
 import com.example.demo.repository.CategorizationRuleRepository;
 import com.example.demo.service.CategorizationRuleService;
+import com.example.demo.repository.CategoryRepository;
 @Service
 public class CategorizationRuleServiceImpl implements CategorizationRuleService{
     @Autowired
     CategorizationRuleRepository categorizationRuleRepository;
+    @Autowired
+    CategoryRepository categoryRepository;
     @Override
     public CategorizationRule createRule(Long categoryId,CategorizationRule rule){
-       return categorizationRuleRepository.save(categoryId,rule);
+       Category category=categoryRepostiory.findById(categoryId).orElse(null);
+       rule.setCategory(category);
+       return categorizationRuleRepository.save(rule);
     }
     @Override
     public List<CategorizationRule> getRulesByCategory(Long categoryId){
