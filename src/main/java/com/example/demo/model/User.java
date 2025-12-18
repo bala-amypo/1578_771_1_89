@@ -2,12 +2,13 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.List;
 @Entity
 @Table(name="users")
 public class User{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long id;
+    private long userId;
     private String fullName;
     @Column(unique=true)
     private String email;
@@ -15,7 +16,17 @@ public class User{
     private String password;
     private String role;
     private LocalDateTime createdAt;
-
+    @Prepersist
+    public void onCreate(){
+    this.createdAt=LocalDateTime.now();
+    }
+    // @ManytoMany
+    // @JoinTable(
+    // name="user_vendor",
+    // joinColumns=@JoinColumn(name="user_id"),
+    // inverseJoinColumns=@JoinColumn(name="vendor_id")
+    // )
+    // private List<Vendor> vendors;
     public User(){}
     public User(String fullName,String email,String password,String role,LocalDateTime createdAt){
         this.fullName=fullName;
@@ -25,8 +36,8 @@ public class User{
         this.createdAt=createdAt;
     }
 
-    public long getId() {
-        return id;
+    public long getUserId() {
+        return userId;
     }
 
     public String getFullName() {
@@ -45,8 +56,8 @@ public class User{
         return role;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setUserId(long userId) {
+        this.userId = id;
     }
 
     public void setFullName(String fullName) {
