@@ -28,7 +28,7 @@ public class CategorizationRule{
         this.priority=priority;
     }
     public void setCategory(Category category){
-        this.category=category
+        this.category=category;
     }
     public void setId(long id) {
         this.id = id;
