@@ -15,13 +15,13 @@ public class UserServiceImpl implements UserService{
     UserRepository userRepository;
     @Override
     public User registerUser(User user) {
-      //   if (userRepository.existsByEmail(user.getEmail())) {
+        return userRepository.save(user);
+    }
+     //   if (userRepository.existsByEmail(user.getEmail())) {
       //       throw new IllegalArgumentException(
       //               "Email already in use: " + user.getEmail()
       //       );
       //   }
-        return userRepository.save(user);
-    }
     @Override
     public User findByEmail(String email){
        Optional<User> optionalUser=userRepository.findByEmail(email);
