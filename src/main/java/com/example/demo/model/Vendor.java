@@ -5,6 +5,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.validation.constraints.Email;
 import java.time.LocalDateTime;
 import jakarta.persistence.Entity;
+import java.util.List;
+import java.util.ArrayList;
+
 @Entity
 public class Vendor{
     @Id
@@ -16,6 +19,12 @@ public class Vendor{
     private String contactEmail;
     private String address;
     private LocalDateTime createdAt;
+    @PrePersist
+    public void onCreate(){
+    this.createdAt=LocalDateTime.now();
+    }
+    @ManytoMany(mappedBy="favouriteVendors")
+    private List<User> users=new ArrayList<>();
 
     public Vendor(){}
     public Vendor(String vendorName,String contactEmail,String address,LocalDateTime createdAt){

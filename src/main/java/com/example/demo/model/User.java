@@ -23,15 +23,15 @@ public class User{
     this.createdAt=LocalDateTime.now();
     }
     
-    // @ManytoMany
-    // @JoinTable(
-    // name="user_vendor",
-    // joinColumns=@JoinColumn(name="user_id"),
-    // inverseJoinColumns=@JoinColumn(name="vendor_id")
-    // )
-    // private List<Vendor> favouriteVendors= new ArrayList<>();
-    // @OnetoMany(mappedBy=uploadedby)
-    // private List<Invoice> invoices=new ArrayList<>();
+    @ManytoMany
+    @JoinTable(
+    name="user_vendor",
+    joinColumns=@JoinColumn(name="user_id"),
+    inverseJoinColumns=@JoinColumn(name="vendor_id")
+    )
+    private List<Vendor> favouriteVendors= new ArrayList<>();
+    @OnetoMany(mappedBy=uploadedby)
+    private List<Invoice> invoices=new ArrayList<>();
     public User(){}
     public User(String fullName,String email,String password,String role,LocalDateTime createdAt){
         this.fullName=fullName;
