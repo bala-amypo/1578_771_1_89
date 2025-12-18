@@ -17,8 +17,8 @@ public class Invoice{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @JsonIgnore
     private long invoiceId;
-    @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="vendorId",nullable=false)
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="vendor_Id",nullable=false)
     @JsonIgnore
     private Vendor vendor;
     @Column(unique=true,nullable=false)
@@ -27,12 +27,15 @@ public class Invoice{
     private Double amount;
     private LocalDate invoiceDate;
     private String description;
-    @ManyToOne(fetch=FetchType.EAGER)
-    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="category_Id",nullable=false)
+    @JsonIgnore
     private Category category;
-    @ManyToOne(fetch=FetchType.EAGER)
-    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="uploaded_by",nullable=false)
+    @JsonIgnore
     private User uploadedBy;
+    @JsonIgnore
     private LocalDateTime uploadedAt;
     @PrePersist
     public void onCreate(){
