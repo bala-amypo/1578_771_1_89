@@ -20,7 +20,7 @@ public class CategorizationRuleServiceImpl implements CategorizationRuleService{
     @Override
     public CategorizationRule createRule(Long categoryId,CategorizationRule rule){
        Optional<Category> optionalRule=categoryRepository.findById(categoryId);
-       rule.setCategory(category);
+       rule.setCategory(optionalRule);
        return categorizationRuleRepository.save(rule);
     }
     @Override
