@@ -16,7 +16,7 @@ public class User{
     private String password;
     private String role;
     private LocalDateTime createdAt;
-    @Prepersist
+    @PrePersist
     public void onCreate(){
     this.createdAt=LocalDateTime.now();
     }
