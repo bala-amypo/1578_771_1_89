@@ -49,7 +49,7 @@ public class CategorizationRule{
     public long getId(){
         return id;
     }
-    public long getCategory(){
+    public Category getCategory(){
         return category;
     }
     public String getKeyword(){
