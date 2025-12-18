@@ -27,7 +27,7 @@ public class Vendor{
     }
     @ManyToMany(mappedBy="favouriteVendors")
     private List<User> users=new ArrayList<>();
-    @OneToMany(mappedBy="vendor_Id")
+    @OneToMany(mappedBy="vendor")
     @JsonIgnore
     private List<Invoice> invoices=new ArrayList<>();
     public Vendor(){}

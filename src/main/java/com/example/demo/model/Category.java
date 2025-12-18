@@ -15,7 +15,7 @@ public class Category{
     private String categoryName;
     private String description;
     private LocalDateTime createdAt;
-    @OneToMany(mappedBy="category_Id")
+    @OneToMany(mappedBy="category")
     @JsonIgnore
     private List<Invoice> invoices=new ArrayList<>();
     public Category(){}
