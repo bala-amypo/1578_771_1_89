@@ -30,8 +30,8 @@ public class User{
     inverseJoinColumns=@JoinColumn(name="vendor_id")
     )
     private List<Vendor> favouriteVendors= new ArrayList<>();
-    @OneToMany(mappedBy=uploadedby)
-    private List<Invoice> invoices=new ArrayList<>();
+    // @OneToMany(mappedBy="uploadedby")
+    // private List<Invoice> invoices=new ArrayList<>();
     public User(){}
     public User(String fullName,String email,String password,String role,LocalDateTime createdAt){
         this.fullName=fullName;
