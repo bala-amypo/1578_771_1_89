@@ -20,7 +20,7 @@ public class CategoryServiceImpl implements CategoryService{
     @Override
     public Category getCategory(Long id){
        Optional<Category> optionalCategory=categoryRepository.findById(id);
-       return optionalCategory.orElse(other: null);
+       return optionalCategory.orElse(null);
     }
     public List<Category> getAllCategories(){
        return categoryRepository.findAll();
