@@ -23,7 +23,6 @@ public class Category{
     @OneToMany(mappedBy="category")
     @JsonIgnore
     private List<CategorizationRule> categorizationrule=new ArrayList<>();
-    private List<Invoice> invoices=new ArrayList<>();
     public Category(){}
     public Category(String categoryName,String description,LocalDateTime createdAt){
         this.categoryName=categoryName;
