@@ -8,7 +8,8 @@ import java.time.LocalDateTime;
 import com.example.demo.model.User;
 import com.example.demo.model.Category;
 @Entity
-@Table(name="invoices",uniqueConstraints=@UniqueConstraint (columnNames={"vendorId","invoiceNumber"}))
+@Table(name="invoices")
+// ,uniqueConstraints=@UniqueConstraint (columnNames={"vendorId","invoiceNumber"}))
 public class Invoice{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
