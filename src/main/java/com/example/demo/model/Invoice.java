@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import com.example.demo.model.User;
 import com.example.demo.model.Category;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="invoices",uniqueConstraints=@UniqueConstraint (columnNames={"vendorId","invoiceNumber"}))
@@ -15,9 +15,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Invoice{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @JsonIgnore
     private long invoiceId;
     @ManyToOne(fetch=FetchType.EAGER)
-    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+    @JoinColumn(name="vendorId",nullable=false)
+    @JsonIgnore
     private Vendor vendor;
     @Column(unique=true,nullable=false)
     private String invoiceNumber;
