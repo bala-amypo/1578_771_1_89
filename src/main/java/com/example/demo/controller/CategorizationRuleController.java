@@ -22,7 +22,7 @@ public class CategorizationRuleController{
     @Autowired
     CategorizationRuleService categorizationRuleService;
     @PostMapping("/category/{categoryId}")
-    public ResponseEntity<CategorizationRule> createAll(@Valid @RequestBody Long categoryId,CategorizationRule rule){
+    public ResponseEntity<CategorizationRule> createAll(@PathVariable Long categoryId,@Valid @RequestBody CategorizationRule rule){
         CategorizationRule c=categorizationRuleService.createRule(categoryId,rule);
         return ResponseEntity.status(201).body(c);
     }
@@ -33,6 +33,6 @@ public class CategorizationRuleController{
     @DeleteMapping("/{ruleId}")
     public ResponseEntity<CategorizationRule> deleteAll(@PathVariable Long ruleId){
        CategorizationRule c=categorizationRuleService.deleteRule(ruleId);
-        return ResponseEntity.status(201).body(c);
+        return ResponseEntity.status(200).body(c);
     }
 }
