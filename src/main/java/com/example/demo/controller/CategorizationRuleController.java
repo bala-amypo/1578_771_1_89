@@ -21,22 +21,17 @@ public class CategorizationRuleController{
     @Autowired
     CategorizationRuleService categorizationRuleService;
     @PostMapping("/category/{categoryId}")
-    public ResponseEntity<CategorizationRule> createAll(@RequestBody Long categoryId,CategorizationRule rule){
+    public ResponseEntity<CategorizationRule> createAll(@Valid @RequestBody Long categoryId,CategorizationRule rule){
         CategorizationRule c=categorizationRuleService.createRule(categoryId,rule);
         return ResponseEntity.status(201).body(c);
     }
     @GetMapping("/category/{categoryId}")
-    public List<CategorizationRule>getAll(Long categoryId){
+    public List<CategorizationRule>getAll(@PathVariable Long categoryId){
         return categorizationRuleService.getRulesByCategory(categoryId);
     }
     @DeleteMapping("/{ruleId}")
     public ResponseEntity<CategorizationRule> deleteAll(@PathVariable Long ruleId){
-        boolean isDeleted=categorizationRuleService.deleteRule(ruleId);
-        if(isDeleted){
-            return ResponseEntity.status(201).body("successful");
-        }
-        else{
-            return ResponseEntity.status(404).build();
-        }
+       CategorizationRule c=categorizationRuleService.deleteRule(ruleId);
+        return ResponseEntity.status(201).body(c);
     }
 }
