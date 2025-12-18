@@ -28,11 +28,11 @@ public class Invoice{
     private LocalDate invoiceDate;
     private String description;
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="category_Id",nullable=false)
+    @JoinColumn(name="category_Id",nullable=true)
     @JsonIgnore
     private Category category;
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="uploaded_by",nullable=false)
+    @JoinColumn(name="uploaded_by",nullable=true)
     @JsonIgnore
     private User uploadedBy;
     @JsonIgnore
