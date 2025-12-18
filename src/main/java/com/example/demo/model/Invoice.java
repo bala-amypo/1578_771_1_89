@@ -13,8 +13,8 @@ public class Invoice{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long invoiceId;
-    @ManyToOne(optional=false)
-    @JoinColumn(name="vendorId")
+    // @ManyToOne(optional=false)
+    // @JoinColumn(name="vendorId")
     private Vendor vendor;
     @Column(unique=true,nullable=false)
     private String invoiceNumber;
@@ -22,11 +22,11 @@ public class Invoice{
     private Double amount;
     private LocalDate invoiceDate;
     private String description;
-    @ManyToOne
-    @JoinColumn(name="categoryId")
+    // @ManyToOne
+    // @JoinColumn(name="categoryId")
     private Category category;
-    @ManyToOne
-    @JoinColumn(name="uploadedBy")
+    // @ManyToOne
+    // @JoinColumn(name="uploadedBy")
     private User uploadedBy;
     private LocalDateTime uploadedAt;
     @PrePersist
