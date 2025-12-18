@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.example.demo.model.Invoice;
+import com.example.demo.model.CategorizationRule;
 
 @Entity
 public class Category{
@@ -20,6 +22,7 @@ public class Category{
     private List<Invoice> invoices=new ArrayList<>();
     @OneToMany(mappedBy="category")
     @JsonIgnore
+    private List<CategorizationRule> categorizationrule=new ArrayList<>();
     private List<Invoice> invoices=new ArrayList<>();
     public Category(){}
     public Category(String categoryName,String description,LocalDateTime createdAt){

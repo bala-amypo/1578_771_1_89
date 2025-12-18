@@ -1,7 +1,9 @@
 package com.example.demo.model;
-import jakarta.persistence.Column;
+import jakarta.persistence.*;
 import jakarta.persistence.GeneratedValue;
 import java.time.LocalDateTime;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class CategorizationRule{
     @Id
@@ -18,12 +20,15 @@ public class CategorizationRule{
     private LocalDateTime createdAt;
  
     public CategorizationRule(){}
-    public CategorizationRule(String keyword,String matchType,int priority){
+    public CategorizationRule(Category category,String keyword,String matchType,int priority){
+        this.category=category;
         this.keyword=keyword;
         this.matchType=matchType;
         this.priority=priority;
     }
-
+    public void setCategory(Category category){
+        this.category=category
+    }
     public void setId(long id) {
         this.id = id;
     }
@@ -42,6 +47,9 @@ public class CategorizationRule{
 
     public long getId(){
         return id;
+    }
+    public long getCategory(){
+        return category;
     }
     public String getKeyword(){
         return keyword;
