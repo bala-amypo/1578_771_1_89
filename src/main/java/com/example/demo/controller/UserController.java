@@ -3,12 +3,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import ord.springframework.web.bind.annotation.GetMapping;
-import ord.springframework.web.bind.annotation.PathVariable;
-import ord.springframework.web.bind.annotation.PostMapping;
-import ord.springframework.web.bind.annotation.RequestBody;
-import ord.springframework.web.bind.annotation.RequestMapping;
-import ord.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
@@ -20,7 +20,7 @@ public class UserController{
     @Autowired
     UserService userService;
     @PostMapping
-    public ResponseEntity<User> createAll(@Valid @RequestBoy User user){
+    public ResponseEntity<User> createAll(@Valid @RequestBody User user){
         User st=userService.registerUser(user);
         return ResponseEntity.status(201).body(st);
     }
@@ -28,7 +28,7 @@ public class UserController{
     public List<User> getAll(){
         return userService.getAllUsers();
     }
-    @GetMapping(/{email})
+    @GetMapping("/{email}")
     public User getById(@Valid @PathVariable String email){
         return userService.findByEmail(email);
     }
