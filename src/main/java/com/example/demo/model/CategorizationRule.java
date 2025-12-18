@@ -3,6 +3,7 @@ import jakarta.persistence.*;
 import jakarta.persistence.GeneratedValue;
 import java.time.LocalDateTime;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.example.demo.model.Category;
 
 @Entity
 public class CategorizationRule{

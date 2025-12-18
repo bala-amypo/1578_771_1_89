@@ -1,32 +1,32 @@
-// package com.example.demo.service.impl;
+package com.example.demo.service.impl;
 
-// import java.util.List;
-// import java.util.Optional;
+import java.util.List;
+import java.util.Optional;
 
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-// import com.example.demo.model.CategorizationRule;
-// import com.example.demo.repository.CategorizationRuleRepository;
-// import com.example.demo.service.CategorizationRuleService;
-// @Service
-// public class CategorizationRuleServiceImpl implements CategorizationRuleService{
-//     @Autowired
-//     CategorizationRuleRepository categorizationRuleRepository;
-//     @Override
-//     public CategorizationRule createRule(Long categoryId,CategorizationRule rule){
-//        return categorizationRuleRepository.save(categoryId,rule);
-//     }
-//     @Override
-//     public List<CategorizationRule> getRulesByCategory(Long categoryId){
-//        return categorizationRuleRepository.findById(categoryId);
-//     }
-//     @Override
-//     public void deleteRule(Long ruleId){
-//         if(categorizationRuleRepository.existsById(ruleId)){
-//             categorizationRuleRepository.deleteById(ruleId);
-//             return true;
-//         }
-//         return false;
-//     }
-// }
+import com.example.demo.model.CategorizationRule;
+import com.example.demo.repository.CategorizationRuleRepository;
+import com.example.demo.service.CategorizationRuleService;
+@Service
+public class CategorizationRuleServiceImpl implements CategorizationRuleService{
+    @Autowired
+    CategorizationRuleRepository categorizationRuleRepository;
+    @Override
+    public CategorizationRule createRule(Long categoryId,CategorizationRule rule){
+       return categorizationRuleRepository.save(categoryId,rule);
+    }
+    @Override
+    public List<CategorizationRule> getRulesByCategory(Long categoryId){
+       return categorizationRuleRepository.findById(categoryId);
+    }
+    @Override
+    public void deleteRule(Long ruleId){
+        if(categorizationRuleRepository.existsById(ruleId)){
+            categorizationRuleRepository.deleteById(ruleId);
+            return true;
+        }
+        return false;
+    }
+}
