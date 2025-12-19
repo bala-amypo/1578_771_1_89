@@ -1,11 +1,13 @@
 package com.example.demo.model;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import jakarta.persistence.GeneratedValue;
 import java.time.LocalDateTime;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.example.demo.model.Category;
 
 @Entity
+@Table(name="categorization_rules",uniqueConstraints=@UniqueConstraint (columnNames="categoryName"))
 public class CategorizationRule{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
