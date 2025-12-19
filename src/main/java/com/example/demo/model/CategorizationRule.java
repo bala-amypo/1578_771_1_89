@@ -19,7 +19,11 @@ public class CategorizationRule{
     private String matchType;
     private int priority;
     private LocalDateTime createdAt;
- 
+    @PrePersist
+    public void onCreate(){
+      this.createdAt=LocalDateTime.now();
+    }
+
     public CategorizationRule(){}
     public CategorizationRule(Category category,String keyword,String matchType,int priority){
         this.category=category;
