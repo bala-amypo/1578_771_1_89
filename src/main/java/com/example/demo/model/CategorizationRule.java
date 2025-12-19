@@ -19,6 +19,8 @@ public class CategorizationRule{
     @NotBlank
     @Size(max=500)
     private String keyword;
+    @Enumerated(EnumType.STRING)
+    @Column(name="match_type",nullable=false)
     private String matchType;
     @Positive
     private int priority;
@@ -70,3 +72,4 @@ public class CategorizationRule{
         return priority;
     }
 }
+enu
