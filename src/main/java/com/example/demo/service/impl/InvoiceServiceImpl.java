@@ -13,6 +13,8 @@ import com.example.demo.repository.UserRepository;
 import com.example.demo.model.Vendor;
 import com.example.demo.repository.VendorRepository;
 import com.example.demo.service.InvoiceService;
+import com.example.demo.exception.ResourceNotFoundException;
+
 @Service
 public class InvoiceServiceImpl implements InvoiceService{
     @Autowired
@@ -24,7 +26,7 @@ public class InvoiceServiceImpl implements InvoiceService{
 
     @Override
     public Invoice uploadInvoice(Long userId,Long vendorId,Invoice invoice){
-       User user=userRepository.findById(userId).orElse(null);
+       User user=userRepository.findById(userId).orElseThrow(()->new Resourc
        Vendor vendor=vendorRepository.findById(vendorId).orElse(null);
        invoice.setUploadedBy(user);
        invoice.setVendor(vendor);
