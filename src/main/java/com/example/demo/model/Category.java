@@ -12,7 +12,6 @@ import com.example.demo.model.CategorizationRule;
 public class Category{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @JsonIgnore
     private long id;
     @Column(unique=true)
     private String categoryName;

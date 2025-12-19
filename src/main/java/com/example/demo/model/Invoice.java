@@ -15,7 +15,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Invoice{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @JsonIgnore
     private long invoiceId;
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="vendor_Id",nullable=true)
@@ -35,7 +34,6 @@ public class Invoice{
     @JoinColumn(name="uploaded_by",nullable=true)
     @JsonIgnore
     private User uploadedBy;
-    @JsonIgnore
     private LocalDateTime uploadedAt;
     @PrePersist
     public void onCreate(){

@@ -9,13 +9,11 @@ import com.example.demo.model.Category;
 public class CategorizationRule{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @JsonIgnore
     private long ruleId;
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="category_id",nullable=true)
     @JsonIgnore
     private Category category;
-    @JsonIgnore
     @Column(nullable=false)
     private String keyword;
     private String matchType;
