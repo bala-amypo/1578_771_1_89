@@ -14,7 +14,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Vendor{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @JsonIgnore
     private long vendorId;
     @Column(unique=true)
     private String vendorName;
