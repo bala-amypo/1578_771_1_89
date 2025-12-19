@@ -7,5 +7,5 @@ import com.example.demo.model.CategorizationRule;
 
 @Repository
 public interface CategorizationRuleRepository extends JpaRepository<CategorizationRule,Long>{
-      List<CategorizationRule> findByCategory_categoryId(Long categoryId);
+      List<CategorizationRule> findByCategoryId(Long categoryId);
 }
