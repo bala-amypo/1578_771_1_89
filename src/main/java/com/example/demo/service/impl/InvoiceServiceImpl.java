@@ -33,7 +33,7 @@ public class InvoiceServiceImpl implements InvoiceService{
        return invoiceRepository.save(invoice);
     }
     @Override
-    public Invoice categorizeInvoice(Long invoiceId){
+    public Invoice categor  izeInvoice(Long invoiceId){
        Invoice invoice=invoiceRepository.findById(invoiceId).orElseThrow(()->new ResourceNotFoundException("Invoice not found with id: "+ invoiceId));
        return invoiceRepository.save(invoice);
     }
