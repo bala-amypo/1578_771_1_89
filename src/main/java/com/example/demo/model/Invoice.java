@@ -10,7 +10,7 @@ import com.example.demo.model.Category;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="invoices",uniqueConstraints=@UniqueConstraint (columnNames={"vendor_Id","invoice_Number"}))
+@Table(name="invoices",uniqueConstraints=@UniqueConstraint (columnNames={"vendor_id","invoice_Number"}))
 
 public class Invoice{
     @Id
@@ -20,9 +20,11 @@ public class Invoice{
     @JoinColumn(name="vendor_id",nullable=false)
     @JsonIgnore
     private Vendor vendor;
-    
+    @NotBlank
+    @Size(max=50)  
     @Column(name="invoice_Number",nullable=false)
     private String invoiceNumber;
+    @NotNull
     @Positive
     private Double amount;
     private LocalDate invoiceDate;
