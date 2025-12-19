@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.example.demo.model.Category;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.service.CategoryService;
+import com.example.demo.exception.ResourceNotFoundException;
+
 @Service
 public class CategoryServiceImpl implements CategoryService{
     @Autowired
@@ -19,8 +21,7 @@ public class CategoryServiceImpl implements CategoryService{
     }
     @Override
     public Category getCategory(Long categoryId){
-       Optional<Category> optionalCategory=categoryRepository.findById(categoryId);
-       return optionalCategory.orElse(null);
+      return categoryRepository.findById(categoryId).orElseThrow(()->new ResourceNotFoundException("Category not found with id: "+categoryId));
     }
     public List<Category> getAllCategories(){
        return categoryRepository.findAll();
