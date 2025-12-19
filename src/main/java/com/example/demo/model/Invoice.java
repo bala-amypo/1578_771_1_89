@@ -1,6 +1,6 @@
 package com.example.demo.model;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import jakarta.validation.constraints.Positive;
 import jakarta.persistence.GeneratedValue;
 import java.time.LocalDate;
