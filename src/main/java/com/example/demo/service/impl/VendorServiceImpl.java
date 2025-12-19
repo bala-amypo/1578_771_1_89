@@ -21,8 +21,7 @@ public class VendorServiceImpl implements VendorService{
     }
     @Override
     public Vendor getVendor(Long vendorId){
-       Optional<Vendor> optionalVendor=vendorRepository.findById(vendorId);
-       return optionalVendor.orElse(null);
+       return vendorRepository.findById(vendorId).orElseThrow(()->new ResourceNotFoundException("Vendor not found with id: "+ vendorId));
     }
     public List<Vendor> getAllVendors(){
        return vendorRepository.findAll();

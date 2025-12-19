@@ -21,8 +21,7 @@ public class UserServiceImpl implements UserService{
     }
     @Override
     public User findByEmail(String email){
-       Optional<User> optionalUser=userRepository.findByEmail(email);
-       return optionalUser.orElse(null);
+       return userRepository.findByEmail(email).orElseThrow(()-> new ResourceNotFoundException("User not found with email: "+ email));
     }
     @Override
     public List<User> getAllUsers(){
