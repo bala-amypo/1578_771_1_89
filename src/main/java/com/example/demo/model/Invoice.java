@@ -17,9 +17,10 @@ public class Invoice{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long invoiceId;
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="vendor_Id",nullable=true)
+    @JoinColumn(name="vendor_id",nullable=false)
     @JsonIgnore
     private Vendor vendor;
+    
     @Column(name="invoice_Number",nullable=false)
     private String invoiceNumber;
     @Positive
