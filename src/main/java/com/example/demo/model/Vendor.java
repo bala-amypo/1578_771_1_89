@@ -2,23 +2,28 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
-import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.*;
 import java.time.LocalDateTime;
 import jakarta.persistence.Entity;
 import java.util.List;
 import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
-@Table(name="vendors")
+@Table(name="vendors",uniqueConstraints=@UniqueConstraint (columnNames="vendorName"))
 
 public class Vendor{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long vendorId;
+    @NotBlank
     @Column(unique=true)
+    @Size(max=150)
     private String vendorName;
     @Email
+    @NotBlank
+    @Size(max=100)
     private String contactEmail;
+    @Size(max=500)
     private String address;
     private LocalDateTime createdAt;
     @PrePersist
