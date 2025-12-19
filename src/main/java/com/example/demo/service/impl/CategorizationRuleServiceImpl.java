@@ -21,7 +21,7 @@ public class CategorizationRuleServiceImpl implements CategorizationRuleService{
     CategoryRepository categoryRepository;
     @Override
     public CategorizationRule createRule(Long categoryId,CategorizationRule rule){
-       Category category=categoryRepository.findById(categoryId).orElseThrow(()->new ResourceNotFoundException("Category Not found"));
+       Category category=categoryRepository.findById(categoryId).orElseThrow(()->new ResourceNotFoundException("Category Not found with Id: "+ categoryId));
        rule.setCategory(category);
        return categorizationRuleRepository.save(rule);
     }
@@ -31,7 +31,10 @@ public class CategorizationRuleServiceImpl implements CategorizationRuleService{
     }
     @Override
     public void deleteRule(Long ruleId){
-        if(categorizationRuleRepository.existsById(ruleId)){
+        if(!categorizationRuleRepository.existsById(ruleId)){
+            throw new ResourceNotFoundException("Rule not found with ruleId: "+ruleId);
+        }
+        else{
             categorizationRuleRepository.deleteById(ruleId);
         }
     }
