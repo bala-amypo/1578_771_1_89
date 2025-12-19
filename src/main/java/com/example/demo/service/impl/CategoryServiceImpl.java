@@ -20,8 +20,8 @@ public class CategoryServiceImpl implements CategoryService{
        return categoryRepository.save(category);
     }
     @Override
-    public Category getCategory(Long categoryId){
-      return categoryRepository.findById(categoryId).orElseThrow(()->new ResourceNotFoundException("Category not found with id: "+categoryId));
+    public Category getCategory(Long id){
+      return categoryRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Category not found with id: "+id));
     }
     public List<Category> getAllCategories(){
        return categoryRepository.findAll();
