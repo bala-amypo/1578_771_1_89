@@ -30,7 +30,7 @@ public class Vendor{
     public void onCreate(){
     this.createdAt=LocalDateTime.now();
     }
-    @ManyToMany(mappedBy="favouriteVendors")
+    @ManyToMany(mappedBy="favoriteVendors")
     private List<User> users=new ArrayList<>();
     @OneToMany(mappedBy="vendor")
     @JsonIgnore
