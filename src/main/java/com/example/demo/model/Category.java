@@ -1,5 +1,6 @@
 package com.example.demo.model;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import jakarta.persistence.GeneratedValue;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -9,12 +10,16 @@ import com.example.demo.model.Invoice;
 import com.example.demo.model.CategorizationRule;
 
 @Entity
+@Table(name="categories")
 public class Category{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
+    @NotBlank
     @Column(unique=true)
+    @Size(max=100)
     private String categoryName;
+    @Size(max=500)
     private String description;
     private LocalDateTime createdAt;
     @OneToMany(mappedBy="category")
