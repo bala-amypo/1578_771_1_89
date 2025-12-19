@@ -10,7 +10,7 @@ import com.example.demo.model.Invoice;
 import com.example.demo.model.CategorizationRule;
 
 @Entity
-@Table(name="categories")
+@Table(name="categories",uniqueConstraints=@UniqueConstraint (columnNames="categoryName"))
 public class Category{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -22,10 +22,14 @@ public class Category{
     @Size(max=500)
     private String description;
     private LocalDateTime createdAt;
+    @PrePersist
+    public void onCreate(){
+    this.createdAt=LocalDateTime.now();
+    }
     @OneToMany(mappedBy="category")
     @JsonIgnore
     private List<Invoice> invoices=new ArrayList<>();
-    @OneToMany(mappedBy="category")
+    @OneToMany(mappedBy="category",cascade=CascadeType.ALL)
     @JsonIgnore
     private List<CategorizationRule> categorizationrule=new ArrayList<>();
     public Category(){}
