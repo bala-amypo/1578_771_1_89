@@ -8,9 +8,9 @@ import jakarta.persistence.Entity;
 import java.util.List;
 import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-@Table(name="vendors)
 @Entity
+@Table(name="vendors")
+
 public class Vendor{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
