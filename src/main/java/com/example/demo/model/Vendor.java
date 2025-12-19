@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
+@Table(name="vendors)
 @Entity
 public class Vendor{
     @Id
