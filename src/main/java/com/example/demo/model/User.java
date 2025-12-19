@@ -23,11 +23,12 @@ public class User{
     @Size(min=8)
     private String password;
     @NotBlank
-    private String role;
+    private String role="USER";
     private LocalDateTime createdAt;
     @PrePersist
     public void onCreate(){
     this.createdAt=LocalDateTime.now();
+    if(this.role==null) this.role="USER";
     }
     
     @ManyToMany
@@ -40,6 +41,7 @@ public class User{
     @OneToMany(mappedBy="uploadedBy")
     @JsonIgnore
     private List<Invoice> invoices=new ArrayList<>();
+    
     public User(){}
     public User(String fullName,String email,String password,String role,LocalDateTime createdAt){
         this.fullName=fullName;
