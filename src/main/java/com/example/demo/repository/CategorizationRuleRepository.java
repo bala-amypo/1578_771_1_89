@@ -6,6 +6,7 @@ import java.util.List;
 import com.example.demo.model.CategorizationRule;
 
 @Repository
-public interface CategorizationRuleRepository extends JpaRepository<CategorizationRule,Long>{
-      List<CategorizationRule> findByCategoryId(Long categoryId);
+public interface CategorizationRuleRepository extends JpaRepository<CategorizationRule, Long> {
+    // The underscore explicitly maps to category.id
+    List<CategorizationRule> findByCategory_Id(Long categoryId);
 }
