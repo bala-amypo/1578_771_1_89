@@ -1,6 +1,6 @@
 package com.example.demo.model;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ public class User{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long userId;
     @NotNull
-    @Size(MAX=100)
+    @Size(max=100)
     private String fullName;
     @Column(nullable=false,unique=true)
     private String email;
