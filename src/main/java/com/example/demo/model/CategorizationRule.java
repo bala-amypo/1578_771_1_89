@@ -11,7 +11,7 @@ public class CategorizationRule{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long ruleId;
     @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="category_Id",nullable=true)
+    @JoinColumn(name="category_id",nullable=true)
     @JsonIgnore
     private Category category;
     @Column(nullable=false)

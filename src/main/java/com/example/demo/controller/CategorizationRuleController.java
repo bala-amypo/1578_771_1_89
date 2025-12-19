@@ -33,6 +33,6 @@ public class CategorizationRuleController{
     @DeleteMapping("/{ruleId}")
     public ResponseEntity<String> deleteRule(@PathVariable Long ruleId){
         categorizationRuleService.deleteRule(ruleId);
-        return ResponseEntity.status(204).body("Deleted Successfully");
+        return ResponseEntity.noContent().build();
     }
 }
