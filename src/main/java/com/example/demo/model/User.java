@@ -12,6 +12,8 @@ public class User{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long userId;
+    @NotNull
+    @Size(MAX=100)
     private String fullName;
     @Column(nullable=false,unique=true)
     private String email;
