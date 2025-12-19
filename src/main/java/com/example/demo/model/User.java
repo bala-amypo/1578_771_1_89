@@ -12,14 +12,17 @@ public class User{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long userId;
-    @NotNull
+    @NotBlank
     @Size(max=100)
     private String fullName;
-    @Column(nullable=false,unique=true)
+    @Email
+    @NotBlank
+    @Column(unique=true)
     private String email;
+    @NotBlank
     @Size(min=8)
     private String password;
-    @Column(nullable=false)
+    @NotBlank
     private String role;
     private LocalDateTime createdAt;
     @PrePersist
