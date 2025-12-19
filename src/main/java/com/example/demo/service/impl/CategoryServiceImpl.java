@@ -18,8 +18,8 @@ public class CategoryServiceImpl implements CategoryService{
        return categoryRepository.save(category);
     }
     @Override
-    public Category getCategory(Long id){
-       Optional<Category> optionalCategory=categoryRepository.findById(id);
+    public Category getCategory(Long categoryId){
+       Optional<Category> optionalCategory=categoryRepository.findById(categoryId);
        return optionalCategory.orElse(null);
     }
     public List<Category> getAllCategories(){

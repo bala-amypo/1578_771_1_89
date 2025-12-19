@@ -12,7 +12,7 @@ import com.example.demo.model.CategorizationRule;
 public class Category{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long id;
+    private long categoryId;
     @Column(unique=true)
     private String categoryName;
     private String description;
@@ -29,8 +29,8 @@ public class Category{
         this.description=description;
         this.createdAt=createdAt;
     }
-    public long getId(){
-        return id;
+    public long getCategoryId(){
+        return categoryId;
     }
     public String getCategoryName(){
         return categoryName;
@@ -41,8 +41,8 @@ public class Category{
     public LocalDateTime getCreatedAt(){
         return createdAt;
     }
-    public void setId(long id) {
-        this.id = id;
+    public void setCategoryId(long categoryId) {
+        this.categoryId = categoryId;
     }
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
