@@ -16,7 +16,26 @@ public class GlobalExceptionHandler{
         WebRequest req
     ){
         return ResponseEntity.status(404).body(Map.of(
-            "timestamp",LocalDateTime.no
-        )
+            "timestamp",LocalDateTime.now(),
+            "message",ex.getMessage()
+        ));
+    }
+    @ExceptionHandler(ApiError.class)
+    public ResponseEntity<Object> handleApiError(
+        ApiError ex
+    ){
+        return ResponseEntity.status(400).body(Map.of(
+            "timestamp",LocalDateTime.now(),
+            "message",ex.getMessage()
+        ));
+    }
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Object> handleIllegalArgument(
+        IllegalArgumentException ex
+    ){
+        return ResponseEntity.status(400).body(Map.of(
+            "timestamp",LocalDateTime.now(),
+            "message",ex.getMessage()
+        ));
     }
 }
