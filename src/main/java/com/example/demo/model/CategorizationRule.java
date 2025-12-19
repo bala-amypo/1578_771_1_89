@@ -10,7 +10,7 @@ public class CategorizationRule{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long ruleId;
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="category_Id",nullable=true)
     @JsonIgnore
     private Category category;
