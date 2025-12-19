@@ -9,5 +9,5 @@ import com.example.demo.model.Invoice;
 @Repository
 public interface InvoiceRepository extends JpaRepository<Invoice,Long>{
     List<Invoice> findByUploadedBy(User user);
-    List<Invoice> findByAmountGreater
+    List<Invoice> findByAmountGreaterThanHql(Double amount);
 } 
