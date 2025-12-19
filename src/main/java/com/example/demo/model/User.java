@@ -37,7 +37,7 @@ public class User{
     joinColumns=@JoinColumn(name="user_Id"),
     inverseJoinColumns=@JoinColumn(name="vendor_Id")
     )
-    private List<Vendor> favouriteVendors= new ArrayList<>();
+    private List<Vendor> favoriteVendors= new ArrayList<>();
     @OneToMany(mappedBy="uploadedBy")
     @JsonIgnore
     private List<Invoice> invoices=new ArrayList<>();
