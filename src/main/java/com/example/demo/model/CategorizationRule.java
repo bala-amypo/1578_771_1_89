@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.example.demo.model.Category;
 
 @Entity
-@Table(name="categorization_rules",uniqueConstraints=@UniqueConstraint (columnNames="categoryName"))
+@Table(name="categorization_rules")
 public class CategorizationRule{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -72,4 +72,8 @@ public class CategorizationRule{
         return priority;
     }
 }
-enu
+enum MatchType{
+    EXACT,
+    CONTAINS,
+    REGEX
+}
