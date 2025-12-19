@@ -13,12 +13,14 @@ public class CategorizationRule{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long ruleId;
     @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="category_id",nullable=true)
+    @JoinColumn(name="category_id",nullable=false)
     @JsonIgnore
     private Category category;
-    @Column(nullable=false)
+    @NotBlank
+    @Size(max=500)
     private String keyword;
     private String matchType;
+    @Positive
     private int priority;
     private LocalDateTime createdAt;
     @PrePersist
