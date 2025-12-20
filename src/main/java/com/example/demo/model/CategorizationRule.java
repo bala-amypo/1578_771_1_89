@@ -31,7 +31,7 @@ public class CategorizationRule{
     }
 
     public CategorizationRule(){}
-    public CategorizationRule(Category category,String keyword,String matchType,int priority){
+    public CategorizationRule(Category category,String keyword,MatchType matchType,int priority){
         this.category=category;
         this.keyword=keyword;
         this.matchType=matchType;
@@ -48,7 +48,7 @@ public class CategorizationRule{
         this.keyword = keyword;
     }
 
-    public void setMatchType(String matchType) {
+    public void setMatchType(MatchType matchType) {
         this.matchType = matchType;
     }
 
@@ -65,7 +65,7 @@ public class CategorizationRule{
     public String getKeyword(){
         return keyword;
     }
-    public String getMatchType(){
+    public MatchType getMatchType(){
         return matchType;
     }
     public int getPriority(){
