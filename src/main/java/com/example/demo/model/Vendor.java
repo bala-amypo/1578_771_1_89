@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Vendor{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long id;
+    private long vendorId;
     @NotBlank
     @Column(unique=true)
     @Size(max=150)
@@ -32,9 +32,9 @@ public class Vendor{
     }
     @ManyToMany(mappedBy="favoriteVendors")
     private List<User> users=new ArrayList<>();
-    // @OneToMany(mappedBy="vendor")
-    // @JsonIgnore
-    // private List<Invoice> invoices=new ArrayList<>();
+    @OneToMany(mappedBy="vendor")
+    @JsonIgnore
+    private List<Invoice> invoices=new ArrayList<>();
     public Vendor(){}
     public Vendor(String vendorName,String contactEmail,String address,LocalDateTime createdAt){
         this.vendorName=vendorName;
@@ -43,8 +43,8 @@ public class Vendor{
         this.createdAt=createdAt;
     }
 
-    public long Id() {
-        return id;
+    public long getVendorId() {
+        return vendorId;
     }
 
     public String getVendorName() {
@@ -59,8 +59,8 @@ public class Vendor{
         return address;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setVendorId(long vendorId) {
+        this.vendorId = vendorId;
     }
 
     public void setVendorName(String vendorName) {

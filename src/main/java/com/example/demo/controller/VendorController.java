@@ -28,8 +28,8 @@ public class VendorController{
     public List<Vendor>getAll(){
         return vendorService.getAllVendors();
     }
-    @GetMapping("/{id}")
-    public Vendor getById(@Valid @PathVariable Long id){
-        return vendorService.getVendor(id);
+    @GetMapping("/{vendorId}")
+    public Vendor getById(@Valid @PathVariable Long vendorId){
+        return vendorService.getVendor(vendorId);
     }
 }
