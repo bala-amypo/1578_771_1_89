@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import jakarta.persistence.Entity;
 import java.util.List;
 import java.util.ArrayList;
+import com.example.demo.model.User;
 // import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name="vendors",uniqueConstraints=@UniqueConstraint (columnNames="vendorName"))
