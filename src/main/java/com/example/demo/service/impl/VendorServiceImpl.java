@@ -23,7 +23,7 @@ public class VendorServiceImpl implements VendorService{
    }
     @Override
     public Vendor createVendor(Vendor vendor){
-      if(vendorRepository.existsByName(vendor.getVendorName())){
+      if(vendorRepository.existsByVendorName(vendor.getVendorName())){
       throw new ResourceNotFoundException("Vendor name already exixts");
       }
       if(vendor.getContactEmail()==null || Pattern.matches("^[A-Za-z0-9+_.-]+@(.+)$",vendor.getContactEmail())){
