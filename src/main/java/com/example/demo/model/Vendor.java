@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Vendor{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long vendorId;
+    private long id;
     @NotBlank
     @Column(unique=true)
     @Size(max=150)
@@ -59,8 +59,8 @@ public class Vendor{
         return address;
     }
 
-    public void setId(long vendorId) {
-        this.vendorId = vendorId;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public void setVendorName(String vendorName) {
