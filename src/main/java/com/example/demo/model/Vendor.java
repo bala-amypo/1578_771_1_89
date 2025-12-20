@@ -43,8 +43,8 @@ public class Vendor{
         this.createdAt=createdAt;
     }
 
-    public long getVendorId() {
-        return vendorId;
+    public long Id() {
+        return id;
     }
 
     public String getVendorName() {
