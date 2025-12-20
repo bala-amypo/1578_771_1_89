@@ -13,7 +13,7 @@ import com.example.demo.model.Vendor;
 public class User{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long id;
+    private long userId;
     @NotBlank
     @Size(max=100)
     private String fullName;
@@ -40,9 +40,9 @@ public class User{
     inverseJoinColumns=@JoinColumn(name="vendor_Id")
     )
     private List<Vendor> favoriteVendors= new ArrayList<>();
-    // @OneToMany(mappedBy="uploadedBy")
-    // @JsonIgnore
-    // private List<Invoice> invoices=new ArrayList<>();
+    @OneToMany(mappedBy="uploadedBy")
+    @JsonIgnore
+    private List<Invoice> invoices=new ArrayList<>();
     
     public User(){}
     public User(String fullName,String email,String password,String role,LocalDateTime createdAt){
@@ -53,8 +53,8 @@ public class User{
         this.createdAt=createdAt;
     }
 
-    public long getId() {
-        return id;
+    public long getUserId() {
+        return userId;
     }
 
     public String getFullName() {
@@ -73,7 +73,7 @@ public class User{
         return role;
     }
 
-    public void setId(long id) {
+    public void setUserId(long userId) {
         this.id = id;
     }
 

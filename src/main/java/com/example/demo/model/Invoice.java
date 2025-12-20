@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Invoice{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long id;
+    private long invoiceId;
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="vendor_id",nullable=false)
     @JsonIgnore
@@ -63,8 +63,8 @@ public class Invoice{
     public void setVendor(Vendor vendor){
     this.vendor=vendor;
     }
-    public long getId(){
-        return id;
+    public long getInvoiceId(){
+        return invoiceId;
     }
     public String getInvoiceNumber() {
         return invoiceNumber;
@@ -99,8 +99,8 @@ public class Invoice{
     public void setInvoiceDate(LocalDate invoiceDate){
         this.invoiceDate=invoiceDate;
     }
-    public void setId(long id) {
-        this.id = id;
+    public void setInvoiceId(long invoiceId) {
+        this.invoiceId = invoiceId;
     }
     public void setInvoiceNumber(String invoiceNumber) {
         this.invoiceNumber = invoiceNumber;
