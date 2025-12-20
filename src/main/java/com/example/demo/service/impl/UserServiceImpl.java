@@ -15,11 +15,18 @@ import com.example.demo.exception.ResourceNotFoundException;
 @Service
 @Transactional
 public class UserServiceImpl implements UserService{
+    private UserRepository userRepository;
     public UserServiceImpl(UserRepository userRepository){
         this.userRepository=userRepository;
     }
     @Override
     public User registerUser(User user) {
+        if(userRepository.existsByEmail(user.getEmail())){
+        throw new ResourceNotFoundException("Email already in use");
+        }
+        if(user.getPassword()==null || user.getPassword().length()< 8){
+            
+        }
         return userRepository.save(user);
     }
     @Override
