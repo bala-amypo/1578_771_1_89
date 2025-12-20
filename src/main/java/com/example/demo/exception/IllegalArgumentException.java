@@ -1,7 +1,7 @@
 package com.example.demo.exception;
 
-public class IllegalArgument extends RuntimeException{
-    public IllegalArgument(String message){
+public class IllegalArgumentException extends RuntimeException{
+    public IllegalArgumentException(String message){
         super(message);
     }
 }
