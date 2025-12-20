@@ -15,10 +15,12 @@ import com.example.demo.model.Vendor;
 import com.example.demo.service.VendorService;
 
 @RestController
-@RequestMapping("/auth/api/vendors")
+@RequestMapping("/api/vendors")
 public class VendorController{
-    @Autowired
-    VendorService vendorService;
+    private VendorService vendorService;
+    public VendorController(VendorService vendorService){
+        this.vendorService=vendorService;
+    }
     @PostMapping
     public ResponseEntity<Vendor> createAll(@Valid @RequestBody Vendor vendor){
         Vendor v=vendorService.createVendor(vendor);

@@ -17,8 +17,10 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/auth/api/users")
 public class UserController{
-    @Autowired
-    UserService userService;
+    private UserService userService;
+    public UserController(UserService userService){
+        this.userService=userService;
+    }
     @PostMapping
     public ResponseEntity<User> createAll(@Valid @RequestBody User user){
         User st=userService.registerUser(user);
