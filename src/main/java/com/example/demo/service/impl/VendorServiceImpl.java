@@ -22,6 +22,10 @@ public class VendorServiceImpl implements VendorService{
    }
     @Override
     public Vendor createVendor(Vendor vendor){
+      if(vendorRepository.existsByName(vendor.getName())){
+      throw new ResourceNotFoundException("Vendor name already exixts");
+      }
+      if(vendor.getContactEmail()==null || Pattern.matches("^[A-]"))
        return vendorRepository.save(vendor);
     }
     @Override
