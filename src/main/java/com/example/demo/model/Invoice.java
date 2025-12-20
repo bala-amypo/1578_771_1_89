@@ -31,9 +31,9 @@ public class Invoice{
     private LocalDate invoiceDate;
     @Size(max=2000)
     private String description;
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="category_id",nullable=true)
-    @JsonIgnore
+    // @ManyToOne(fetch=FetchType.LAZY)
+    // @JoinColumn(name="category_id",nullable=true)
+    // @JsonIgnore
     private Category category;
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="uploaded_by_id",nullable=false)

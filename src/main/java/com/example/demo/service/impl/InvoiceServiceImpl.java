@@ -32,7 +32,6 @@ public class InvoiceServiceImpl implements InvoiceService{
     public Invoice uploadInvoice(Long userId,Long vendorId,Invoice invoice){
        User user=userRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("User not found"));
        Vendor vendor=vendorRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Vendor not found"));
-       
        invoice.setUploadedBy(user);
        invoice.setVendor(vendor);
        return invoiceRepository.save(invoice);
