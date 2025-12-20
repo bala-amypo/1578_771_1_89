@@ -40,9 +40,9 @@ public class User{
     inverseJoinColumns=@JoinColumn(name="vendor_Id")
     )
     private List<Vendor> favoriteVendors= new ArrayList<>();
-    @OneToMany(mappedBy="uploadedBy")
-    @JsonIgnore
-    private List<Invoice> invoices=new ArrayList<>();
+    // @OneToMany(mappedBy="uploadedBy")
+    // @JsonIgnore
+    // private List<Invoice> invoices=new ArrayList<>();
     
     public User(){}
     public User(String fullName,String email,String password,String role,LocalDateTime createdAt){

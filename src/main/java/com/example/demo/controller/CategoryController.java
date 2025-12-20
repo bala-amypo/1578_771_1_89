@@ -17,8 +17,10 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/api/categories")
 public class CategoryController{
-    @Autowired
-    CategoryService categoryService;
+    private CategoryService categoryService;
+    public CategoryController(CategoryService categoryService){
+        this.categoryService=categoryService;
+    }
     @PostMapping
     public ResponseEntity<Category> createAll(@Valid @RequestBody Category category){
         Category c=categoryService.createCategory(category);
