@@ -2,6 +2,7 @@ package com.example.demo.service.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,8 +26,10 @@ public class VendorServiceImpl implements VendorService{
       if(vendorRepository.existsByName(vendor.getName())){
       throw new ResourceNotFoundException("Vendor name already exixts");
       }
-      if(vendor.getContactEmail()==null || Pattern.matches("^[A-]"))
-       return vendorRepository.save(vendor);
+      if(vendor.getContactEmail()==null || Pattern.matches("^[A-Za-z0-9+_.-]+@(.+)$",vendor.getContactEmail())){
+         throw new IllegalArgumentException("Invalid contact email format");
+      }
+      return vendorRepository.save(vendor);
     }
     @Override
     public Vendor getVendor(Long vendorId){
