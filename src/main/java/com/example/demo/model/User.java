@@ -74,7 +74,7 @@ public class User{
     }
 
     public void setId(long id) {
-        this.userId = id;
+        this.id = id;
     }
 
     public void setFullName(String fullName) {
