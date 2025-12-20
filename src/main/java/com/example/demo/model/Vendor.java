@@ -32,9 +32,9 @@ public class Vendor{
     }
     @ManyToMany(mappedBy="favoriteVendors")
     private List<User> users=new ArrayList<>();
-    @OneToMany(mappedBy="vendor")
-    @JsonIgnore
-    private List<Invoice> invoices=new ArrayList<>();
+    // @OneToMany(mappedBy="vendor")
+    // @JsonIgnore
+    // private List<Invoice> invoices=new ArrayList<>();
     public Vendor(){}
     public Vendor(String vendorName,String contactEmail,String address,LocalDateTime createdAt){
         this.vendorName=vendorName;
