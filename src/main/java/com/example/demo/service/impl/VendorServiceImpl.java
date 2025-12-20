@@ -26,7 +26,7 @@ public class VendorServiceImpl implements VendorService{
       if(vendorRepository.existsByVendorName(vendor.getVendorName())){
       throw new ResourceNotFoundException("Vendor name already exixts");
       }
-      if(vendor.getContactEmail()==null || Pattern.matches("^[A-Za-z0-9+_.-]+@(.+)$",vendor.getContactEmail())){
+      if(vendor.getContactEmail()==null || !Pattern.matches("^[A-Za-z0-9+_.-]+@(.+)$",vendor.getContactEmail())){
          throw new IllegalArgumentException("Invalid contact email format");
       }
       return vendorRepository.save(vendor);
