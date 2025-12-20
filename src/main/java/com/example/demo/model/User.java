@@ -2,11 +2,11 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.time.LocalDateTime;
-// import java.util.List;
-// import java.util.ArrayList;
-// import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.List;
+import java.util.ArrayList;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 // import com.example.demo.model.Invoice;
-// import com.example.demo.model.Vendor;
+import com.example.demo.model.Vendor;
 
 @Entity
 @Table(name="users",uniqueConstraints=@UniqueConstraint (columnNames="email"))
@@ -33,13 +33,13 @@ public class User{
     if(this.role==null) this.role="USER";
     }
     
-    // @ManyToMany
-    // @JoinTable(
-    // name="user_vendor",
-    // joinColumns=@JoinColumn(name="user_Id"),
-    // inverseJoinColumns=@JoinColumn(name="vendor_Id")
-    // )
-    // private List<Vendor> favoriteVendors= new ArrayList<>();
+    @ManyToMany
+    @JoinTable(
+    name="user_vendor",
+    joinColumns=@JoinColumn(name="user_Id"),
+    inverseJoinColumns=@JoinColumn(name="vendor_Id")
+    )
+    private List<Vendor> favoriteVendors= new ArrayList<>();
     // @OneToMany(mappedBy="uploadedBy")
     // @JsonIgnore
     // private List<Invoice> invoices=new ArrayList<>();
