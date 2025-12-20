@@ -21,7 +21,7 @@ public class CategorizationRule{
     private String keyword;
     @Enumerated(EnumType.STRING)
     @Column(name="match_type",nullable=false)
-    private String matchType;
+    private MatchType matchType;
     @Positive
     private int priority;
     private LocalDateTime createdAt;
