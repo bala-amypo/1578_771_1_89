@@ -2,16 +2,18 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.ArrayList;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+// import java.util.List;
+// import java.util.ArrayList;
+// import com.fasterxml.jackson.annotation.JsonIgnore;
+// import com.example.demo.model.Invoice;
+// import com.example.demo.model.Vendor;
 
 @Entity
 @Table(name="users",uniqueConstraints=@UniqueConstraint (columnNames="email"))
 public class User{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long userId;
+    private long id;
     @NotBlank
     @Size(max=100)
     private String fullName;
@@ -31,16 +33,16 @@ public class User{
     if(this.role==null) this.role="USER";
     }
     
-    @ManyToMany
-    @JoinTable(
-    name="user_vendor",
-    joinColumns=@JoinColumn(name="user_Id"),
-    inverseJoinColumns=@JoinColumn(name="vendor_Id")
-    )
-    private List<Vendor> favoriteVendors= new ArrayList<>();
-    @OneToMany(mappedBy="uploadedBy")
-    @JsonIgnore
-    private List<Invoice> invoices=new ArrayList<>();
+    // @ManyToMany
+    // @JoinTable(
+    // name="user_vendor",
+    // joinColumns=@JoinColumn(name="user_Id"),
+    // inverseJoinColumns=@JoinColumn(name="vendor_Id")
+    // )
+    // private List<Vendor> favoriteVendors= new ArrayList<>();
+    // @OneToMany(mappedBy="uploadedBy")
+    // @JsonIgnore
+    // private List<Invoice> invoices=new ArrayList<>();
     
     public User(){}
     public User(String fullName,String email,String password,String role,LocalDateTime createdAt){
@@ -51,8 +53,8 @@ public class User{
         this.createdAt=createdAt;
     }
 
-    public long getUserId() {
-        return userId;
+    public long getId() {
+        return id;
     }
 
     public String getFullName() {
@@ -71,8 +73,8 @@ public class User{
         return role;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setId(long id) {
+        this.userId = id;
     }
 
     public void setFullName(String fullName) {
