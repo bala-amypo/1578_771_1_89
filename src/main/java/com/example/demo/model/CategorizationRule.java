@@ -3,7 +3,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import jakarta.persistence.GeneratedValue;
 import java.time.LocalDateTime;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.example.demo.model.Category;
 
 @Entity
@@ -14,7 +14,7 @@ public class CategorizationRule{
     private long ruleId;
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="category_id",nullable=false)
-    @JsonIgnore
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Category category;
     @NotBlank
     @Size(max=500)
