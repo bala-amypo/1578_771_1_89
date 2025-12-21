@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import com.example.demo.model.User;
 import com.example.demo.model.Category;
 import com.example.demo.model.Vendor;
-// import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="invoices",uniqueConstraints=@UniqueConstraint (columnNames={"vendor_id","invoiceNumber"}))
@@ -19,7 +19,7 @@ public class Invoice{
     private long invoiceId;
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="vendor_id",nullable=false)
-    // @JsonIgnore
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Vendor vendor;
     @NotBlank
     @Size(max=50)  
@@ -34,11 +34,11 @@ public class Invoice{
     private String description;
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="category_id",nullable=true)
-    // @JsonIgnore
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Category category;
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="uploaded_by_id",nullable=false)
-    // @JsonIgnore
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private User uploadedBy;
     private LocalDateTime uploadedAt;
     @PrePersist
