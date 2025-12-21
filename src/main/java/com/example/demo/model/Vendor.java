@@ -8,7 +8,8 @@ import jakarta.persistence.Entity;
 import java.util.List;
 import java.util.ArrayList;
 import com.example.demo.model.User;
-// import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.example.demo.model.Invoice;
 @Entity
 @Table(name="vendors",uniqueConstraints=@UniqueConstraint (columnNames="vendorName"))
 
@@ -33,9 +34,9 @@ public class Vendor{
     }
     @ManyToMany(mappedBy="favoriteVendors")
     private List<User> users=new ArrayList<>();
-    // @OneToMany(mappedBy="vendor")
-    // @JsonIgnore
-    // private List<Invoice> invoices=new ArrayList<>();
+    @OneToMany(mappedBy="vendor")
+    @JsonIgnore
+    private List<Invoice> invoices=new ArrayList<>();
     public Vendor(){}
     public Vendor(String vendorName,String contactEmail,String address,LocalDateTime createdAt){
         this.vendorName=vendorName;

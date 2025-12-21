@@ -3,10 +3,10 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import jakarta.persistence.GeneratedValue;
 import java.time.LocalDateTime;
-// import java.util.List;
-// import java.util.ArrayList;
-// import com.fasterxml.jackson.annotation.JsonIgnore;
-// import com.example.demo.model.Invoice;
+import java.util.List;
+import java.util.ArrayList;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.example.demo.model.Invoice;
 // import com.example.demo.model.CategorizationRule;
 
 @Entity
@@ -26,9 +26,9 @@ public class Category{
     public void onCreate(){
     this.createdAt=LocalDateTime.now();
     }
-    // @OneToMany(mappedBy="category")
-    // @JsonIgnore
-    // private List<Invoice> invoices=new ArrayList<>();
+    @OneToMany(mappedBy="category")
+    @JsonIgnore
+    private List<Invoice> invoices=new ArrayList<>();
     // @OneToMany(mappedBy="category",cascade=CascadeType.ALL)
     // @JsonIgnore
     // private List<CategorizationRule> categorizationrule=new ArrayList<>();
