@@ -4,7 +4,7 @@ import jakarta.validation.constraints.*;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ArrayList;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+// import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.example.demo.model.Invoice;
 import com.example.demo.model.Vendor;
 
@@ -41,7 +41,7 @@ public class User{
     )
     private List<Vendor> favoriteVendors= new ArrayList<>();
     @OneToMany(mappedBy="uploadedBy")
-    @JsonIgnore
+    // @JsonIgnore
     private List<Invoice> invoices=new ArrayList<>();
     
     public User(){}
