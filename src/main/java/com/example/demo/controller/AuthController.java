@@ -26,7 +26,7 @@ public class AuthController {
         if (userService.findByEmail(user.getEmail()) != null) {
             throw new ApiError("Email already exists");
         }
-        if (user.getPassword().length() < 6) {
+        if (user.getPassword().length() < 8) {
             throw new ApiError("Password must be at least 6 characters");
         }
 
