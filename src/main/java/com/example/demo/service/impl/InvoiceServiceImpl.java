@@ -50,4 +50,4 @@ public class InvoiceServiceImpl implements InvoiceService{
     public Invoice getInvoice(Long invoiceId){
       return invoiceRepository.findById(invoiceId).orElseThrow(()->new ResourceNotFoundException("Invoice not found"));
     }
-} 
+}
