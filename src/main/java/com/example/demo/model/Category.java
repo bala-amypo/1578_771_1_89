@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.example.demo.model.Invoice;
-// import com.example.demo.model.CategorizationRule;
+import com.example.demo.model.CategorizationRule;
 
 @Entity
 @Table(name="categories",uniqueConstraints=@UniqueConstraint (columnNames="categoryName"))
@@ -29,9 +29,9 @@ public class Category{
     @OneToMany(mappedBy="category")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private List<Invoice> invoices=new ArrayList<>();
-    // @OneToMany(mappedBy="category",cascade=CascadeType.ALL)
-    // @JsonIgnore
-    // private List<CategorizationRule> categorizationrule=new ArrayList<>();
+    @OneToMany(mappedBy="category",cascade=CascadeType.ALL)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private List<CategorizationRule> categorizationrule=new ArrayList<>();
     public Category(){}
     public Category(String categoryName,String description,LocalDateTime createdAt){
         this.categoryName=categoryName;
