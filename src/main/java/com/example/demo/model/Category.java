@@ -27,7 +27,7 @@ public class Category{
     this.createdAt=LocalDateTime.now();
     }
     @OneToMany(mappedBy="category")
-    // @JsonIgnore
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private List<Invoice> invoices=new ArrayList<>();
     // @OneToMany(mappedBy="category",cascade=CascadeType.ALL)
     // @JsonIgnore
