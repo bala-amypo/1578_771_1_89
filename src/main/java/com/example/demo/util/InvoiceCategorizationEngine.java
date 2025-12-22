@@ -31,9 +31,16 @@ public class InvoiceCategorizationEngine{
                     break;
                 case REGEX:
                     try{
-                        if(description.matches(keyword))
+                        if(description.matches(keyword)){
+                            return rule.getCategory();
+                        }
                     }
+                    catch(Exception e){
+
+                    }
+                    break;
             }
         }
+        return null;
     }
 }

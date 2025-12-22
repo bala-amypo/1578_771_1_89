@@ -12,6 +12,7 @@ import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.model.Vendor;
 import com.example.demo.repository.VendorRepository;
+import com.example.demo.repository.CategorizationRuleRepository;
 import com.example.demo.service.InvoiceService;
 import com.example.demo.exception.ResourceNotFoundException;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,10 +23,14 @@ public class InvoiceServiceImpl implements InvoiceService{
     private InvoiceRepository invoiceRepository;
     private UserRepository userRepository;
     private VendorRepository vendorRepository;
-    public InvoiceServiceImpl(InvoiceRepository invoiceRepository,UserRepository userRepository,VendorRepository vendorRepository){
+    private CategorizationRuleRepository categorizationRuleRepository;
+    private InvoiceCategorizationEngine invoiceCategorizationEngine;
+    public InvoiceServiceImpl(InvoiceRepository invoiceRepository,UserRepository userRepository,VendorRepository vendorRepository,CategorizationRuleRepository categorizationRuleRepository,InvoiceCategorizationEngine invoiceCategorizationEngine){
         this.invoiceRepository=invoiceRepository;
         this.userRepository=userRepository;
         this.vendorRepository=vendorRepository;
+        this.categorizationRuleRepository=categorizationRuleRepository;
+        this.invoiceCategorizationEngine=invoiceCategorizationEngine;
     }
 
     @Override
@@ -34,6 +39,7 @@ public class InvoiceServiceImpl implements InvoiceService{
        Vendor vendor=vendorRepository.findById(vendorId).orElseThrow(()->new ResourceNotFoundException("Vendor not found"));
        invoice.setUploadedBy(user);
        invoice.setVendor(vendor);
+       invoice.setCategory(null);
        return invoiceRepository.save(invoice);
     }
     @Override
