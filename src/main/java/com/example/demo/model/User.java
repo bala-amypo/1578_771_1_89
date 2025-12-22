@@ -32,14 +32,6 @@ public class User{
     this.createdAt=LocalDateTime.now();
     if(this.role==null) this.role="USER";
     }
-    
-    @ManyToMany
-    @JoinTable(
-    name="user_vendor",
-    joinColumns=@JoinColumn(name="user_Id"),
-    inverseJoinColumns=@JoinColumn(name="vendor_Id")
-    )
-    private List<Vendor> favoriteVendors= new ArrayList<>();
     @OneToMany(mappedBy="uploadedBy")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private List<Invoice> invoices=new ArrayList<>();

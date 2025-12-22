@@ -32,8 +32,6 @@ public class Vendor{
     public void onCreate(){
     this.createdAt=LocalDateTime.now();
     }
-    @ManyToMany(mappedBy="favoriteVendors")
-    private List<User> users=new ArrayList<>();
     @OneToMany(mappedBy="vendor")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private List<Invoice> invoices=new ArrayList<>();
