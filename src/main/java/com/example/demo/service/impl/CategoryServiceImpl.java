@@ -10,6 +10,7 @@ import com.example.demo.model.Category;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.service.CategoryService;
 import com.example.demo.exception.ResourceNotFoundException;
+import com.example.demo.exception.ApiError;
 
 @Service
 public class CategoryServiceImpl implements CategoryService{
@@ -21,7 +22,7 @@ public class CategoryServiceImpl implements CategoryService{
     @Override
     public Category createCategory(Category category){
       if (categoryRepository.existsByCategoryName(category.getCategoryName())) {
-            throw new ResourceNotFoundException("Category already exists");
+            throw new ApiError("Category already exists");
         }
        return categoryRepository.save(category);
     }

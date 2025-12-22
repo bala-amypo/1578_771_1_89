@@ -12,6 +12,7 @@ import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.exception.IllegalArgumentException;
+import com.example.demo.exception.ApiError;
 
 @Service
 @Transactional
@@ -23,7 +24,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public User registerUser(User user) {
         if(userRepository.existsByEmail(user.getEmail())){
-        throw new ResourceNotFoundException("Email already in use");
+        throw new ApiError("Email already in use");
         }
         if(user.getPassword()==null || user.getPassword().length()< 8){
             throw new IllegalArgumentException("Password must be at least 8 characters long");
