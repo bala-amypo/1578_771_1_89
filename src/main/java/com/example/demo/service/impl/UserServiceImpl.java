@@ -28,7 +28,9 @@ public class UserServiceImpl implements UserService{
         if(user.getPassword()==null || user.getPassword().length()< 8){
             throw new IllegalArgumentException("Password must be at least 8 characters long");
         }
+        if(user.getRole()==null){
         user.setRole("USER");
+        }
         return userRepository.save(user);
     }
     @Override
