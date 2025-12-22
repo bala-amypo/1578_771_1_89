@@ -72,8 +72,3 @@ public class CategorizationRule{
         return priority;
     }
 }
-enum MatchType{
-    EXACT,
-    CONTAINS,
-    REGEX
-}
