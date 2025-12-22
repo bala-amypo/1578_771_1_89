@@ -11,9 +11,11 @@ import com.example.demo.repository.InvoiceRepository;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.model.Vendor;
+import com.example.demo.model.Category;
 import com.example.demo.repository.VendorRepository;
 import com.example.demo.repository.CategorizationRuleRepository;
 import com.example.demo.service.InvoiceService;
+import com.example.demo.util.InvoiceCategorizationEngine;
 import com.example.demo.exception.ResourceNotFoundException;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,6 +47,12 @@ public class InvoiceServiceImpl implements InvoiceService{
     @Override
     public Invoice categorizeInvoice(Long invoiceId){
        Invoice invoice=invoiceRepository.findById(invoiceId).orElseThrow(()->new ResourceNotFoundException("Invoice not found"));
+       List<CategorizationRule> rules=categorizationRuleRepository.findAll();
+       rules.sort((r1,r2)-> r2.getPriority() - r1.getPriority());
+       Category category=invoiceCategorizationEngine.determineCategory(invoice,rules);
+       if(category==null){
+       invoice.setCategory(category);
+       }
        return invoiceRepository.save(invoice);
     }
     @Override
