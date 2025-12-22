@@ -12,7 +12,7 @@ import com.example.demo.model.Invoice;
 @Component
 public class InvoiceCategorizationEngine{
     public Category determineCategory(Invoice invoice,List<CategorizationRule> rules){
-        if(invoice==null) || invoice.getDescription()==null){
+        if((invoice==null) || invoice.getDescription()==null){
             return null;
         }
         String description=invoice.getDescription().toLowerCase();

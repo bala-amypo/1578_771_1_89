@@ -5,7 +5,7 @@ public enum MatchType{
     CONTAINS,
     REGEX;
 
-    public String toUpperCase() {
-        throw new UnsupportedOperationException("Unimplemented method 'toUpperCase'");
-    }
+    // public String toUpperCase() {
+    //     throw new UnsupportedOperationException("Unimplemented method 'toUpperCase'");
+    // }
 }
