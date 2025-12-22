@@ -11,5 +11,29 @@ import com.example.demo.model.Invoice;
 
 @Component
 public class InvoiceCategorizationEngine{
-    public Category determineCategory(Invoice invoice,List<CategorizationRule> rules)
+    public Category determineCategory(Invoice invoice,List<CategorizationRule> rules){
+        if(invoice==null) || invoice.getDescription()==null){
+            return null;
+        }
+        String description=invoice.getDescription().toLowerCase();
+        for(CategorizationRule rule:rules){
+            String keyword=rule.getKeyword().toLowerCase();
+            switch(rule.getMatchType()){
+                case EXACT:
+                    if(description.equals(keyword)){
+                        return rule.getCategory();
+                    }
+                    break;
+                case CONTAINS:
+                    if(description.contains(keyword)){
+                        return rule.getCategory();
+                    }
+                    break;
+                case REGEX:
+                    try{
+                        if(description.matches(keyword))
+                    }
+            }
+        }
+    }
 }
