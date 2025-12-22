@@ -12,6 +12,7 @@ import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.model.Vendor;
 import com.example.demo.model.Category;
+import com.example.demo.model.CategorizationRule;
 import com.example.demo.repository.VendorRepository;
 import com.example.demo.repository.CategorizationRuleRepository;
 import com.example.demo.service.InvoiceService;
