@@ -13,6 +13,7 @@ import com.example.demo.repository.VendorRepository;
 import com.example.demo.service.VendorService;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.exception.IllegalArgumentException;
+import com.example.demo.exception.ApiError;
 
 @Service
 @Transactional
@@ -24,7 +25,7 @@ public class VendorServiceImpl implements VendorService{
     @Override
     public Vendor createVendor(Vendor vendor){
       if(vendorRepository.existsByVendorName(vendor.getVendorName())){
-      throw new ResourceNotFoundException("Vendor name already exixts");
+      throw new ApiError("Vendor name already exixts");
       }
       if(vendor.getContactEmail()==null || !Pattern.matches("^[A-Za-z0-9+_.-]+@(.+)$",vendor.getContactEmail())){
          throw new IllegalArgumentException("Invalid contact email format");
