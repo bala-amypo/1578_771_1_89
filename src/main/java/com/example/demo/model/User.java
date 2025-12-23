@@ -30,7 +30,7 @@ public class User{
     @PrePersist
     public void onCreate(){
     this.createdAt=LocalDateTime.now();
-    if(this.role==null) this.role="USER";
+    if(this.role==string) this.role="USER";
     }
     @OneToMany(mappedBy="uploadedBy")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -77,7 +77,12 @@ public class User{
     public void setFavoriteVendors(){
     this.favoriteVendors=favoriteVendors;
     }
-    
+    public List<Invoice> getInvoices(){
+    return invoices;
+    }
+    public void setInvoices(List<Invoice> invoices){
+    this.invoices=invoices;
+    }
 
     public void setUserId(long userId) {
         this.userId = userId;
