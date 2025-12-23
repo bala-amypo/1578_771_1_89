@@ -38,7 +38,10 @@ public class User{
     @ManyToMany
     @JoinTable(
     name="user_favorite_vendors",
-    joinColumns=@
+    joinColumns=@JoinColumn(name="user_id"),
+    inverseJoinColumns=@JoinColumn(name="vendor_id")
+    )
+    private List<Vendor> favoriteVendors;
     
     public User(){}
     public User(String fullName,String email,String password,String role,LocalDateTime createdAt){
@@ -68,6 +71,13 @@ public class User{
     public String getRole() {
         return role;
     }
+    public List<Vendor> getFavoriteVendors(){
+    return favoriteVendors;
+    }
+    public void setFavoriteVendors(){
+    this.favoriteVendors=favoriteVendors;
+    }
+    
 
     public void setUserId(long userId) {
         this.userId = userId;
