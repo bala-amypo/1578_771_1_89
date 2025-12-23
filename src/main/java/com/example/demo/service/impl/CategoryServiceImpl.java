@@ -13,6 +13,7 @@ import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.exception.ApiError;
 
 @Service
+@Transactional
 public class CategoryServiceImpl implements CategoryService{
     private CategoryRepository categoryRepository;
     public CategoryServiceImpl(CategoryRepository categoryRepository){
