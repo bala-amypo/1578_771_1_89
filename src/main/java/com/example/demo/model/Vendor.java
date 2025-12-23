@@ -83,4 +83,16 @@ public class Vendor{
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt=createdAt;
     }
+    public List<Invoice> getInvoices(){
+        return invoices;
+    }
+    public void setInvoices(List<Invoice> invoices){
+        this.invoices=invoices;
+    }
+    public List<User> getFavoritedByUsers(){
+        return favoritedByUsers;
+    }
+    public void setFavoritedByUsers(List<User> favoritedByUsers){
+        this.favoritedByUsers=favoritedByUsers;
+    }
 }
