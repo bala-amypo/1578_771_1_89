@@ -10,7 +10,7 @@ import com.example.demo.model.Invoice;
 import com.example.demo.model.CategorizationRule;
 
 @Entity
-@Table(name="categories",uniqueConstraints=@UniqueConstraint (columnNames="categoryName"))
+@Table(name="categories",uniqueConstraints=@UniqueConstraint (columnNames="category_name"))
 public class Category{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
