@@ -30,7 +30,7 @@ public class User{
     @PrePersist
     public void onCreate(){
     this.createdAt=LocalDateTime.now();
-    if(this.role==string) this.role="USER";
+    if(this.role=="string") this.role="USER";
     }
     @OneToMany(mappedBy="uploadedBy")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
