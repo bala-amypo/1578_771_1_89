@@ -14,6 +14,7 @@ import com.example.demo.repository.CategorizationRuleRepository;
 import com.example.demo.service.CategorizationRuleService;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.exception.ResourceNotFoundException;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
