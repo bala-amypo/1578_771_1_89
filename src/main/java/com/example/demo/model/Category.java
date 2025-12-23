@@ -31,7 +31,7 @@ public class Category{
     private List<Invoice> invoices;
     @OneToMany(mappedBy="category",cascade=CascadeType.ALL)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private List<CategorizationRule> categorizationrule;
+    private List<CategorizationRule> categorizationrules;
     public Category(){}
     public Category(String categoryName,String description,LocalDateTime createdAt){
         this.categoryName=categoryName;
@@ -72,6 +72,6 @@ public class Category{
         return categorizationRules;
     }
     public void setCategorizationRules(List<CategorizationRule> categorizationRules){
-        this.
+        this.categorizationRules=categorizationRules;
     }
 }
