@@ -7,5 +7,5 @@ import com.example.demo.model.Vendor;
 
 @Repository
 public interface VendorRepository extends JpaRepository<Vendor,Long>{
-      boolean existsByVendorName(String vendorName);
+//       boolean existsByVendorName(String vendorName);
 }
