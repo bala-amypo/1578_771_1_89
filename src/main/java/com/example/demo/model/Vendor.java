@@ -11,7 +11,7 @@ import com.example.demo.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.example.demo.model.Invoice;
 @Entity
-@Table(name="vendors",uniqueConstraints=@UniqueConstraint (columnNames="vendorName"))
+@Table(name="vendors",uniqueConstraints={@UniqueConstraint (columnNames="vendorName"),@UniqueConstraint (columnNames="contact_email")})
 
 public class Vendor{
     @Id
@@ -34,7 +34,9 @@ public class Vendor{
     }
     @OneToMany(mappedBy="vendor")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private List<Invoice> invoices=new ArrayList<>();
+    private List<Invoice> invoices;
+    @ManyToMany(mappedBy="favoriteVendors")
+    private List<User> favoritedByUsers;
     public Vendor(){}
     public Vendor(String vendorName,String contactEmail,String address,LocalDateTime createdAt){
         this.vendorName=vendorName;
