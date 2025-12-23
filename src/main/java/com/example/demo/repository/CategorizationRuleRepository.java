@@ -10,5 +10,5 @@ import org.springframework.data.jpa.repository.Query;
 public interface CategorizationRuleRepository extends JpaRepository<CategorizationRule, Long> {
     // List<CategorizationRule> findByCategory_Id(Long categoryId);
     @Query(""" SELECT r FROM CategorizationRule r WHERE LOWER( :description) LIKE LOWER(CONCAT('%, r.keyword,'%')) ORDER BY r.priority DESC """)
-    List<Cat
+    List<CategorizationRule> findMatchingRulesByDescription(String description);
 }
