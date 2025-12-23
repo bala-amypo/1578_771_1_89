@@ -10,7 +10,9 @@ import com.example.demo.model.Category;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.service.CategoryService;
 import com.example.demo.exception.ResourceNotFoundException;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.exception.ApiError;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
@@ -23,7 +25,7 @@ public class CategoryServiceImpl implements CategoryService{
     @Override
     public Category createCategory(Category category){
       if (categoryRepository.existsByCategoryName(category.getCategoryName())) {
-            throw new ApiError("Category already exists");
+            throw new IllegalArgumentException("Category name already exists");
         }
        return categoryRepository.save(category);
     }
