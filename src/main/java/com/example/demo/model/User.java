@@ -35,6 +35,10 @@ public class User{
     @OneToMany(mappedBy="uploadedBy")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private List<Invoice> invoices=new ArrayList<>();
+    @ManyToMany
+    @JoinTable(
+    name="user_favorite_vendors",
+    joinColumns=@
     
     public User(){}
     public User(String fullName,String email,String password,String role,LocalDateTime createdAt){
