@@ -28,10 +28,10 @@ public class Category{
     }
     @OneToMany(mappedBy="category")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private List<Invoice> invoices=new ArrayList<>();
+    private List<Invoice> invoices;
     @OneToMany(mappedBy="category",cascade=CascadeType.ALL)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private List<CategorizationRule> categorizationrule=new ArrayList<>();
+    private List<CategorizationRule> categorizationrule;
     public Category(){}
     public Category(String categoryName,String description,LocalDateTime createdAt){
         this.categoryName=categoryName;
@@ -61,5 +61,17 @@ public class Category{
     }
     public void setCreatedAt(LocalDateTime createdAt){
         this.createdAt=createdAt;
+    }
+    public List<Invoice> getInvoices(){
+        return invoices;
+    }
+    public void setInvoices(List<Invoice> invoices){
+        this.invoices=invoices;
+    }
+    public List<CategorizationRule> getCategorizationRules(){
+        return categorizationRules;
+    }
+    public void setCategorizationRules(List<CategorizationRule> categorizationRules){
+        this.
     }
 }
