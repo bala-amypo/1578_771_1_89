@@ -2,6 +2,8 @@ package com.example.demo.service.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Comparator;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,7 @@ import com.example.demo.repository.CategoryRepository;
 import com.example.demo.exception.ResourceNotFoundException;
 
 @Service
+@Transactional
 public class CategorizationRuleServiceImpl implements CategorizationRuleService{
     private CategorizationRuleRepository categorizationRuleRepository;
     private CategoryRepository categoryRepository;

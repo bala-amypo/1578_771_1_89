@@ -52,7 +52,7 @@ public class InvoiceServiceImpl implements InvoiceService{
     public Invoice categorizeInvoice(Long invoiceId){
        Invoice invoice=invoiceRepository.findById(invoiceId).orElseThrow(()->new ResourceNotFoundException("Invoice not found"));
        List<CategorizationRule> rules=categorizationRuleRepository.findAll();
-       rules.sort((r1,r2)-> r2.getPriority() - r1.getPriority());
+      //  rules.sort((r1,r2)-> r2.getPriority() - r1.getPriority());
        Category category=invoiceCategorizationEngine.determineCategory(invoice, rules);
        if(category!=null){
        invoice.setCategory(category);
