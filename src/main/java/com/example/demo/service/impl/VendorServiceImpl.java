@@ -25,7 +25,7 @@ public class VendorServiceImpl implements VendorService{
     @Override
     public Vendor createVendor(Vendor vendor){
       if(vendorRepository.existsByVendorName(vendor.getVendorName())){
-      throw new ApiError("Vendor name already exixts");
+      throw new IllegalArgumentException("Vendor name already exists");
       }
       if(vendor.getContactEmail()==null || !Pattern.matches("^[A-Za-z0-9+_.-]+@(.+)$",vendor.getContactEmail())){
          throw new IllegalArgumentException("Invalid contact email format");
