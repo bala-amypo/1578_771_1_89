@@ -10,4 +10,5 @@ public interface CategorizationRuleRepository
 
     List<CategorizationRule> findByCategoryIdOrderByPriorityDesc(Long categoryId);
     List<CategorizationRule> findMatchingRulesByDescription(String description);
+    List<CategorizationRule> findByKeywordContainingIgnoreCase(String keyword);
 }
