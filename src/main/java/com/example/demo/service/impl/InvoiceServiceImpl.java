@@ -50,12 +50,13 @@ public class InvoiceServiceImpl implements InvoiceService {
     }
 
     @Override
-    public Invoice categorizeInvoice(Long invoiceId) {
-
+    public Invoice categorizeInvoice(Long invoiceId){
         Invoice invoice = invoiceRepository.findById(invoiceId)
-                .orElseThrow(() -> new RuntimeException("Invoice not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Invoice not found"));
 
-        categorizationEngine.categorizeInvoice(invoice);
+        List<CategorizationRule> rules = ruleRepository.findAll();
+        Category category = engine.determineCategory(invoice, rules);
+        invoice.setCategory(category);
 
         return invoiceRepository.save(invoice);
     }
