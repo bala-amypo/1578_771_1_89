@@ -8,9 +8,6 @@ import java.util.List;
 public interface CategorizationRuleRepository
         extends JpaRepository<CategorizationRule, Long> {
 
-    /**
-     * Finds rules where invoice description contains rule description
-     */
     List<CategorizationRule>
-    findByDescriptionContainingIgnoreCase(String description);
+    findByCategoryIdOrderByPriorityDesc(Long categoryId);
 }

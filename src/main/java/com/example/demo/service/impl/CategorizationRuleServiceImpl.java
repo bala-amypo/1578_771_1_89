@@ -33,9 +33,7 @@ public class CategorizationRuleServiceImpl implements CategorizationRuleService 
     }
 
     @Override
-    public List<CategorizationRule> getRulesByCategory(Long categoryId){
-        categoryRepository.findById(categoryId)
-                .orElseThrow(() -> new ResourceNotFoundException("Category not found"));
+    public List<CategorizationRule> getRulesByCategory(Long categoryId) {
         return ruleRepository.findByCategoryIdOrderByPriorityDesc(categoryId);
     }
 
