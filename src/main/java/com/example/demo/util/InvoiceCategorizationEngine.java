@@ -13,14 +13,31 @@ public class InvoiceCategorizationEngine {
             Invoice invoice,
             List<CategorizationRule> rules) {
 
+        String description = invoice.getDescription().toLowerCase();
+
         return rules.stream()
                 .sorted(Comparator.comparing(CategorizationRule::getPriority).reversed())
-                .filter(rule ->
-                        invoice.getDescription()
-                                .toLowerCase()
-                                .contains(rule.getKeyword().toLowerCase()))
+                .filter(rule -> matchesRule(description, rule))
                 .map(CategorizationRule::getCategory)
                 .findFirst()
                 .orElse(null);
+    }
+
+    private boolean matchesRule(String description, CategorizationRule rule) {
+        String keyword = rule.getKeyword().toLowerCase();
+
+        switch (rule.getMatchType()) {
+            case EXACT:
+                return description.equals(keyword);
+
+            case CONTAINS:
+                return description.contains(keyword);
+
+            case REGEX:
+                return description.matches(keyword);
+
+            default:
+                return false;
+        }
     }
 }

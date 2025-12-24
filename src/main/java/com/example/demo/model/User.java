@@ -17,7 +17,7 @@ public class User {
     private String fullName;
 
     @Email @NotBlank
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String email;
 
     @NotBlank

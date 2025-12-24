@@ -24,9 +24,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User registerUser(User user) {
-        if(userRepository.existsByEmail(user.getEmail())) {
-            throw new RuntimeException("Email already in use");
-        }
+       if (userRepository.existsByEmail(user.getEmail())) {
+             throw new IllegalArgumentException("Email already in use");
+}
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         if(user.getRole() == null) user.setRole("USER");
         return userRepository.save(user);
