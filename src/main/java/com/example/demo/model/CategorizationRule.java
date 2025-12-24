@@ -11,7 +11,6 @@ public class CategorizationRule {
     private Long id;
 
     private String keyword;
-
     private Integer priority;
 
     @Enumerated(EnumType.STRING)
@@ -22,30 +21,31 @@ public class CategorizationRule {
 
     private LocalDateTime createdAt;
 
-    // ✅ REQUIRED BY TEST
     @PrePersist
     public void prePersist() {
         this.createdAt = LocalDateTime.now();
     }
 
-    // ===== getters & setters =====
-
     public Long getId() { return id; }
 
     public String getKeyword() { return keyword; }
-
     public void setKeyword(String keyword) { this.keyword = keyword; }
 
     public Integer getPriority() { return priority; }
-
     public void setPriority(Integer priority) { this.priority = priority; }
 
     public MatchType getMatchType() { return matchType; }
 
-    public void setMatchType(MatchType matchType) { this.matchType = matchType; }
+    public void setMatchType(MatchType matchType) {
+        this.matchType = matchType;
+    }
+
+    // ✅ REQUIRED BY TESTS
+    public void setMatchType(String matchType) {
+        this.matchType = MatchType.valueOf(matchType);
+    }
 
     public Category getCategory() { return category; }
-
     public void setCategory(Category category) { this.category = category; }
 
     public LocalDateTime getCreatedAt() { return createdAt; }

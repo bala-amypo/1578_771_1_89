@@ -1,78 +1,47 @@
-package com.example.demo.impl;
+package com.example.demo.service.impl;
 
-import jakarta.persistence.*;
-import java.time.LocalDateTime;
+import com.example.demo.model.CategorizationRule;
+import com.example.demo.model.Category;
+import com.example.demo.repository.CategorizationRuleRepository;
+import com.example.demo.repository.CategoryRepository;
+import com.example.demo.exception.ResourceNotFoundException;
+import com.example.demo.service.CategorizationRuleService;
 
-@Entity
-public class CategorizationRule {
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@Service
+@Transactional
+public class CategorizationRuleServiceImpl implements CategorizationRuleService {
 
-    private String keyword;
+    private final CategorizationRuleRepository ruleRepository;
+    private final CategoryRepository categoryRepository;
 
-    private Integer priority;
-
-    @Enumerated(EnumType.STRING)
-    private MatchType matchType;
-
-    @ManyToOne
-    private Category category;
-
-    private LocalDateTime createdAt;
-
-    // ✅ REQUIRED BY TEST
-    @PrePersist
-    public void prePersist() {
-        this.createdAt = LocalDateTime.now();
+    public CategorizationRuleServiceImpl(
+            CategorizationRuleRepository ruleRepository,
+            CategoryRepository categoryRepository) {
+        this.ruleRepository = ruleRepository;
+        this.categoryRepository = categoryRepository;
     }
 
-    // ===== getters & setters =====
-
-    public Long getId() {
-        return id;
+    @Override
+    public CategorizationRule createRule(Long categoryId, CategorizationRule rule) {
+        Category category = categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found"));
+        rule.setCategory(category);
+        return ruleRepository.save(rule);
     }
 
-    public String getKeyword() {
-        return keyword;
+    @Override
+    public List<CategorizationRule> getRulesByCategory(Long categoryId) {
+        return ruleRepository.findByCategoryIdOrderByPriorityDesc(categoryId);
     }
 
-    public void setKeyword(String keyword) {
-        this.keyword = keyword;
-    }
-
-    public Integer getPriority() {
-        return priority;
-    }
-
-    public void setPriority(Integer priority) {
-        this.priority = priority;
-    }
-
-    public MatchType getMatchType() {
-        return matchType;
-    }
-
-    // ✅ EXISTING (DO NOT REMOVE)
-    public void setMatchType(MatchType matchType) {
-        this.matchType = matchType;
-    }
-
-    // ✅ REQUIRED BY TEST (STRING → ENUM)
-    public void setMatchType(String matchType) {
-        this.matchType = MatchType.valueOf(matchType);
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    @Override
+    public void deleteRule(Long ruleId) {
+        CategorizationRule rule = ruleRepository.findById(ruleId)
+                .orElseThrow(() -> new ResourceNotFoundException("Rule not found"));
+        ruleRepository.delete(rule);
     }
 }
