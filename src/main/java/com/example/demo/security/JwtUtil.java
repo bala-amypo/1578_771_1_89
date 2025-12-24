@@ -1,8 +1,10 @@
 package com.example.demo.security;
 
+import com.example.demo.model.User;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
@@ -21,7 +23,7 @@ public class JwtUtil {
         return Keys.hmacShaKeyFor(secret.getBytes());
     }
 
-    // ✅ Used by AuthController
+    // ✅ USED BY CONTROLLER
     public String createToken(Long userId, String email, String role) {
         return Jwts.builder()
                 .setSubject(email)
@@ -33,7 +35,16 @@ public class JwtUtil {
                 .compact();
     }
 
-    // ✅ Used by JwtAuthenticationFilter
+    // ✅ REQUIRED BY TEST (BACKWARD COMPATIBILITY)
+    public String generateToken(UserDetails userDetails, User user) {
+        return createToken(
+                user.getId(),
+                userDetails.getUsername(),
+                user.getRole()
+        );
+    }
+
+    // ✅ EXISTING METHOD
     public boolean validateToken(String token) {
         try {
             Jwts.parserBuilder()
@@ -44,6 +55,12 @@ public class JwtUtil {
         } catch (JwtException | IllegalArgumentException e) {
             return false;
         }
+    }
+
+    // ✅ REQUIRED BY TEST (OVERLOADED METHOD)
+    public boolean validateToken(String token, UserDetails userDetails) {
+        return validateToken(token)
+                && getEmail(token).equals(userDetails.getUsername());
     }
 
     public String getEmail(String token) {
