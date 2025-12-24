@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Table(name = "vendors")
@@ -22,16 +22,20 @@ public class Vendor {
     private String address;
 
     private LocalDateTime createdAt;
+    @ManyToMany(mappedBy = "favoriteVendors")
+    private Set<User> users = new HashSet<>();
 
+  
     @OneToMany(mappedBy = "vendor")
     private List<Invoice> invoices;
 
     public Vendor() {}
 
-    public Vendor(String vendorName, String contactEmail, String address) {
+    public Vendor(String vendorName, String contactEmail, String address,Set<User> users) {
         this.vendorName = vendorName;
         this.contactEmail = contactEmail;
         this.address = address;
+        this.users=users;
     }
 
     @PrePersist
@@ -39,7 +43,9 @@ public class Vendor {
         this.createdAt = LocalDateTime.now();
     }
 
-    // Getters and Setters
+    public Set<User> getUsers() {
+        return users;
+    }
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

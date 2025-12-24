@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Table(name = "users")
@@ -36,14 +36,15 @@ public class User {
     private Set<Vendor> favoriteVendors = new HashSet<>();
     @OneToMany(mappedBy = "uploadedBy")
     private List<Invoice> invoices;
-
+    
     public User() {}
 
-    public User(String fullName, String email, String password, String role) {
+    public User(String fullName, String email, String password, String role,Set<Vendor> favoriteVendors) {
         this.fullName = fullName;
         this.email = email;
         this.password = password;
         this.role = role;
+        this.favoriteVendors=favoriteVendors;
     }
 
     @PrePersist
@@ -74,14 +75,4 @@ public class User {
     }
     public List<Invoice> getInvoices() { return invoices; }
     public void setInvoices(List<Invoice> invoices) { this.invoices = invoices; }
-}
-
-
-    @ManyToMany(mappedBy = "favoriteVendors")
-    private Set<User> users = new HashSet<>();
-
-    // ✅ REQUIRED BY TEST
-    public Set<User> getUsers() {
-        return users;
-    }
 }
