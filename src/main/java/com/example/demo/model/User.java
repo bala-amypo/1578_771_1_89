@@ -27,7 +27,13 @@ public class User {
     private String role;
 
     private LocalDateTime createdAt;
-
+    @ManyToMany
+    @JoinTable(
+        name = "user_favorite_vendors",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "vendor_id")
+    )
+    private Set<Vendor> favoriteVendors = new HashSet<>();
     @OneToMany(mappedBy = "uploadedBy")
     private List<Invoice> invoices;
 
@@ -46,7 +52,6 @@ public class User {
         if (this.role == null) this.role = "USER";
     }
 
-    // Getters and Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -64,7 +69,19 @@ public class User {
 
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
-
+    public Set<Vendor> getFavoriteVendors() {
+        return favoriteVendors;
+    }
     public List<Invoice> getInvoices() { return invoices; }
     public void setInvoices(List<Invoice> invoices) { this.invoices = invoices; }
+}
+
+
+    @ManyToMany(mappedBy = "favoriteVendors")
+    private Set<User> users = new HashSet<>();
+
+    // ✅ REQUIRED BY TEST
+    public Set<User> getUsers() {
+        return users;
+    }
 }
