@@ -8,6 +8,6 @@ import java.util.List;
 public interface CategorizationRuleRepository
         extends JpaRepository<CategorizationRule, Long> {
 
-    // ✅ EXACT NAME REQUIRED BY TEST
+    List<CategorizationRule> findByCategoryIdOrderByPriorityDesc(Long categoryId);
     List<CategorizationRule> findMatchingRulesByDescription(String description);
 }
