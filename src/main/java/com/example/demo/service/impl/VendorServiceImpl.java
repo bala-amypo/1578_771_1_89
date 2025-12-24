@@ -1,42 +1,38 @@
 package com.example.demo.service.impl;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.regex.Pattern;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.example.demo.model.Vendor;
 import com.example.demo.repository.VendorRepository;
-import com.example.demo.service.VendorService;
 import com.example.demo.exception.ResourceNotFoundException;
-import com.example.demo.exception.IllegalArgumentException;
-import com.example.demo.exception.ApiError;
+import com.example.demo.service.VendorService;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
-public class VendorServiceImpl implements VendorService{
-   private VendorRepository vendorRepository;
-   public VendorServiceImpl(VendorRepository vendorRepository){
-        this.vendorRepository=vendorRepository;
-   }
-    @Override
-    public Vendor createVendor(Vendor vendor){
-      if(vendorRepository.existsByVendorName(vendor.getVendorName())){
-      throw new IllegalArgumentException("Vendor name already exists");
-      }
-      if(vendor.getContactEmail()==null || !Pattern.matches("^[A-Za-z0-9+_.-]+@(.+)$",vendor.getContactEmail())){
-         throw new IllegalArgumentException("Invalid contact email format");
-      }
-      return vendorRepository.save(vendor);
+public class VendorServiceImpl implements VendorService {
+
+    private final VendorRepository vendorRepository;
+
+    public VendorServiceImpl(VendorRepository vendorRepository) {
+        this.vendorRepository = vendorRepository;
     }
+
     @Override
-    public Vendor getVendor(Long vendorId){
-       return vendorRepository.findById(vendorId).orElseThrow(()->new ResourceNotFoundException("Vendor not found"));
+    public Vendor createVendor(Vendor vendor) {
+        if(vendorRepository.existsByVendorName(vendor.getVendorName()))
+            throw new RuntimeException("Vendor name already exists");
+        return vendorRepository.save(vendor);
     }
-    public List<Vendor> getAllVendors(){
-       return vendorRepository.findAll();
+
+    @Override
+    public Vendor getVendor(Long vendorId) {
+        return vendorRepository.findById(vendorId)
+                .orElseThrow(() -> new ResourceNotFoundException("Vendor not found"));
+    }
+
+    @Override
+    public List<Vendor> getAllVendors() {
+        return vendorRepository.findAll();
     }
 }
