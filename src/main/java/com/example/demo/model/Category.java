@@ -1,77 +1,58 @@
 package com.example.demo.model;
+
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
-import jakarta.persistence.GeneratedValue;
+import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.ArrayList;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.example.demo.model.Invoice;
-import com.example.demo.model.CategorizationRule;
 
 @Entity
-@Table(name="categories",uniqueConstraints=@UniqueConstraint (columnNames="category_name"))
-public class Category{
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long id;
-    @NotBlank
-    @Column(unique=true)
-    @Size(max=100)
+@Table(name = "categories")
+public class Category {
+
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotBlank @Column(unique = true)
     private String categoryName;
-    @Size(max=500)
+
     private String description;
+
     private LocalDateTime createdAt;
-    @PrePersist
-    public void onCreate(){
-    this.createdAt=LocalDateTime.now();
-    }
-    @OneToMany(mappedBy="category")
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+
+    @OneToMany(mappedBy = "category")
     private List<Invoice> invoices;
-    @OneToMany(mappedBy="category",cascade=CascadeType.ALL)
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private List<CategorizationRule> categorizationrules;
-    public Category(){}
-    public Category(String categoryName,String description,LocalDateTime createdAt){
-        this.categoryName=categoryName;
-        this.description=description;
-        this.createdAt=createdAt;
-    }
-    public long getId(){
-        return id;
-    }
-    public String getCategoryName(){
-        return categoryName;
-    }
-    public String getDescription(){
-        return description;
-    }
-    public LocalDateTime getCreatedAt(){
-        return createdAt;
-    }
-    public void setId(long id) {
-        this.id = id;
-    }
-    public void setCategoryName(String categoryName) {
+
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    private List<CategorizationRule> rules;
+
+    public Category() {}
+
+    public Category(String categoryName, String description) {
         this.categoryName = categoryName;
-    }
-    public void setDescription(String description) {
         this.description = description;
     }
-    public void setCreatedAt(LocalDateTime createdAt){
-        this.createdAt=createdAt;
+
+    @PrePersist
+    public void prePersist() {
+        this.createdAt = LocalDateTime.now();
     }
-    public List<Invoice> getInvoices(){
-        return invoices;
-    }
-    public void setInvoices(List<Invoice> invoices){
-        this.invoices=invoices;
-    }
-    public List<CategorizationRule> getCategorizationRules(){
-        return categorizationRules;
-    }
-    public void setCategorizationRules(List<CategorizationRule> categorizationRules){
-        this.categorizationRules=categorizationRules;
-    }
+
+    // Getters and Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public String getCategoryName() { return categoryName; }
+    public void setCategoryName(String categoryName) { this.categoryName = categoryName; }
+
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+
+    public List<Invoice> getInvoices() { return invoices; }
+    public void setInvoices(List<Invoice> invoices) { this.invoices = invoices; }
+
+    public List<CategorizationRule> getRules() { return rules; }
+    public void setRules(List<CategorizationRule> rules) { this.rules = rules; }
 }
