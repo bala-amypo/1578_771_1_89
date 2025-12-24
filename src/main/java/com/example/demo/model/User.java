@@ -7,7 +7,12 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 @Entity
-@Table(name = "users",uniqueConstraints=@UniqueConstraint(columnNames={"email"}))
+@Table(
+    name = "users",
+    uniqueConstraints = {
+        @UniqueConstraint(columnNames = "email")
+    }
+)
 public class User {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
