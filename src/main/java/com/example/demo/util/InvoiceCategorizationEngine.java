@@ -1,8 +1,8 @@
 package com.example.demo.util;
 
 import com.example.demo.model.CategorizationRule;
+import com.example.demo.model.Category;
 import com.example.demo.model.Invoice;
-import com.example.demo.repository.CategorizationRuleRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -10,42 +10,36 @@ import java.util.List;
 @Component
 public class InvoiceCategorizationEngine {
 
-    private final CategorizationRuleRepository ruleRepository;
+    /**
+     * Determines category for an invoice based on rules
+     */
+    public Category determineCategory(
+            Invoice invoice,
+            List<CategorizationRule> rules) {
 
-    public InvoiceCategorizationEngine(CategorizationRuleRepository ruleRepository) {
-        this.ruleRepository = ruleRepository;
-    }
-
-    public void categorize(Invoice invoice) {
-
-        if (invoice.getDescription() == null) {
-            return;
+        if (invoice == null || rules == null || rules.isEmpty()) {
+            return null;
         }
 
-        String invoiceDesc = invoice.getDescription().toLowerCase();
+        String invoiceDesc = invoice.getDescription();
+        if (invoiceDesc == null) {
+            return null;
+        }
 
-        List<CategorizationRule> rules =
-                ruleRepository.findByCategoryIdOrderByPriorityDesc(
-                        invoice.getCategory().getId()
-                );
+        invoiceDesc = invoiceDesc.toLowerCase();
 
         for (CategorizationRule rule : rules) {
 
-            String keyword = rule.getKeyword().toLowerCase();
+            String keyword = rule.getKeyword();
+            if (keyword == null) continue;
 
-            if ("CONTAINS".equalsIgnoreCase(rule.getMatchType())
-                    && invoiceDesc.contains(keyword)) {
+            keyword = keyword.toLowerCase();
 
-                invoice.setCategory(rule.getCategory());
-                return;
-            }
-
-            if ("EQUALS".equalsIgnoreCase(rule.getMatchType())
-                    && invoiceDesc.equals(keyword)) {
-
-                invoice.setCategory(rule.getCategory());
-                return;
+            if (invoiceDesc.contains(keyword)) {
+                return rule.getCategory();
             }
         }
+
+        return null; // no match
     }
 }
