@@ -28,7 +28,7 @@ public class Vendor {
 
   
     @OneToMany(mappedBy = "vendor")
-    C
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     private List<Invoice> invoices;
 
     public Vendor() {}
