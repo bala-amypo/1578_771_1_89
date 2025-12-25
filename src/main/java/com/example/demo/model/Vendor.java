@@ -23,6 +23,7 @@ public class Vendor {
     private String address;
 
     private LocalDateTime createdAt;
+    @JsonIgnoreProperties("favoriteVendors")
     @ManyToMany(mappedBy = "favoriteVendors")
     private Set<User> users = new HashSet<>();
 
