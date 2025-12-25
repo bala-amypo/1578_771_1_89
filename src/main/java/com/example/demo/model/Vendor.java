@@ -45,9 +45,9 @@ public class Vendor {
         this.createdAt = LocalDateTime.now();
     }
 
-    // public Set<User> getUsers() {
-    //     return users;
-    // }
+    public Set<User> getUsers() {
+        return users;
+    }
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
