@@ -46,7 +46,7 @@ public class Vendor {
     }
 
     public Set<User> getUsers() {
-        return null;
+        return users;
     }
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
