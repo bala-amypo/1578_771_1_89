@@ -21,9 +21,11 @@ public class Category {
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "category")
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     private List<Invoice> invoices;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     private List<CategorizationRule> rules;
 
     public Category() {}
@@ -51,9 +53,9 @@ public class Category {
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
 
-    public List<Invoice> getInvoices() { return invoices; }
-    public void setInvoices(List<Invoice> invoices) { this.invoices = invoices; }
+    // public List<Invoice> getInvoices() { return invoices; }
+    // public void setInvoices(List<Invoice> invoices) { this.invoices = invoices; }
 
-    public List<CategorizationRule> getRules() { return rules; }
-    public void setRules(List<CategorizationRule> rules) { this.rules = rules; }
+    // public List<CategorizationRule> getRules() { return rules; }
+    // public void setRules(List<CategorizationRule> rules) { this.rules = rules; }
 }

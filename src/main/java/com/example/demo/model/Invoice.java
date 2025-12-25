@@ -18,7 +18,9 @@ public class Invoice {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne @JoinColumn(name="vendor_id", nullable=false)
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="vendor_id", nullable=false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     private Vendor vendor;
 
     @NotBlank
@@ -32,10 +34,14 @@ public class Invoice {
 
     private String description;
 
-    @ManyToOne @JoinColumn(name="category_id")
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="category_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     private Category category;
 
-    @ManyToOne @JoinColumn(name="uploaded_by_id", nullable=false)
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="uploaded_by_id", nullable=false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     private User uploadedBy;
 
     private LocalDateTime uploadedAt;

@@ -18,7 +18,7 @@ public class CategorizationRule {
     private MatchType matchType;
 
     @ManyToOne
-     @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     private Category category;
 
     private LocalDateTime createdAt;
