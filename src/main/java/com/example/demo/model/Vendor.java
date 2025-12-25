@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.util.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "vendors")
@@ -27,6 +28,7 @@ public class Vendor {
 
   
     @OneToMany(mappedBy = "vendor")
+    C
     private List<Invoice> invoices;
 
     public Vendor() {}
@@ -61,6 +63,6 @@ public class Vendor {
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
 
-    public List<Invoice> getInvoices() { return invoices; }
-    public void setInvoices(List<Invoice> invoices) { this.invoices = invoices; }
+    // public List<Invoice> getInvoices() { return invoices; }
+    // public void setInvoices(List<Invoice> invoices) { this.invoices = invoices; }
 }

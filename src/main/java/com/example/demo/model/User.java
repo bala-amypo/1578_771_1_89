@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.util.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(
@@ -40,6 +41,7 @@ public class User {
     )
     private Set<Vendor> favoriteVendors = new HashSet<>();
     @OneToMany(mappedBy = "uploadedBy")
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     private List<Invoice> invoices;
     
     public User() {}
@@ -78,6 +80,6 @@ public class User {
     public Set<Vendor> getFavoriteVendors() {
         return favoriteVendors;
     }
-    public List<Invoice> getInvoices() { return invoices; }
-    public void setInvoices(List<Invoice> invoices) { this.invoices = invoices; }
+    // public List<Invoice> getInvoices() { return invoices; }
+    // public void setInvoices(List<Invoice> invoices) { this.invoices = invoices; }
 }

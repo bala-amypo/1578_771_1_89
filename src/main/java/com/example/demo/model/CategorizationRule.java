@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class CategorizationRule {
@@ -17,6 +18,7 @@ public class CategorizationRule {
     private MatchType matchType;
 
     @ManyToOne
+     @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     private Category category;
 
     private LocalDateTime createdAt;
