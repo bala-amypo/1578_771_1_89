@@ -1,8 +1,7 @@
-package com.example.demo.security;
+package com.example.testswag.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -30,17 +29,30 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
+            // ❌ Disable CSRF for APIs
             .csrf(csrf -> csrf.disable())
+
+            // ❌ Stateless session (JWT based)
             .sessionManagement(session ->
-                    session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("/auth/**",
-                                     "/swagger-ui/**",
-                                     "/v3/api-docs/**",
-                                     "/hello-servlet").permitAll()
-                    .anyRequest().authenticated()
+                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             )
-            .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+
+            // ✅ AUTHORIZATION RULES (FIXES 403)
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers(
+                    "/auth/**",
+                    "/api/**",
+                    "/swagger-ui/**",
+                    "/v3/api-docs/**"
+                ).permitAll()
+                .anyRequest().authenticated()
+            )
+
+            // ✅ JWT filter
+            .addFilterBefore(
+                jwtAuthenticationFilter(),
+                UsernamePasswordAuthenticationFilter.class
+            );
 
         return http.build();
     }
