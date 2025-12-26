@@ -1,6 +1,6 @@
-package com.example.jwtdemo.filter;
+package com.example.demo.security;
 
-import com.example.jwtdemo.util.JwtUtil;
+import com.example.demo.security.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
