@@ -50,7 +50,7 @@
 //         return new JwtAuthenticationFilter(jwtUtil);
 //     }
 // }
-package com.example.testswag.security;
+package com.example.demo.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

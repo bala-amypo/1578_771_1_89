@@ -81,7 +81,7 @@
 // }
 package com.example.demo.security;
 
-import com.example.testswag.model.User;
+import com.example.demo.model.User;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
