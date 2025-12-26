@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/rules")
 @Tag(name = "Categorization Rules")
-@SecurityRequirement(name="BearAuth")
+@SecurityRequirement(name = "bearerAuth")
 public class CategorizationRuleController {
 
     private final CategorizationRuleService ruleService;

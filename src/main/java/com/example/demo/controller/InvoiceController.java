@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/invoices")
 @Tag(name = "Invoices")
-@SecurityRequirement(name="BearAuth")
+@SecurityRequirement(name = "bearerAuth")
 public class InvoiceController {
 
     private final InvoiceService invoiceService;

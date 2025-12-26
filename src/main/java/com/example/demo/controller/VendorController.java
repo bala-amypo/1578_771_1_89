@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/vendors")
 @Tag(name = "Vendors")
-@SecurityRequirement(name="BearAuth")
+@SecurityRequirement(name = "bearerAuth")
 public class VendorController {
 
     private final VendorService vendorService;
