@@ -33,17 +33,18 @@ public class User {
     private String role;
 
     private LocalDateTime createdAt;
+    
+    @OneToMany(mappedBy = "uploadedBy")
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+    private List<Invoice> invoices;
+    
     @ManyToMany
     @JoinTable(
         name = "user_favorite_vendors",
         joinColumns = @JoinColumn(name = "user_id"),
         inverseJoinColumns = @JoinColumn(name = "vendor_id")
     )
-    private Set<Vendor> favoriteVendors = new HashSet<>();
-    @OneToMany(mappedBy = "uploadedBy")
-    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-    private List<Invoice> invoices;
-    
+    private Set<Vendor> favoriteVendors = new HashSet<>(); 
     public User() {}
 
     public User(String fullName, String email, String password, String role,Set<Vendor> favoriteVendors) {
@@ -80,6 +81,5 @@ public class User {
     public Set<Vendor> getFavoriteVendors() {
         return favoriteVendors;
     }
-    // public List<Invoice> getInvoices() { return invoices; }
-    // public void setInvoices(List<Invoice> invoices) { this.invoices = invoices; }
+   
 }
