@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.util.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "vendors")
 public class Vendor {
@@ -23,8 +23,9 @@ public class Vendor {
     private String address;
 
     private LocalDateTime createdAt;
-    @JsonIgnoreProperties({"favoriteVendors","users"})
+    // @JsonIgnoreProperties({"favoriteVendors","users"})
     @ManyToMany(mappedBy = "favoriteVendors")
+    @JsonIgnore
     private Set<User> users = new HashSet<>();
 
   
