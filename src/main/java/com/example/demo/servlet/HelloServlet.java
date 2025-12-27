@@ -10,16 +10,11 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = "/hello-servlet")
 public class HelloServlet extends HttpServlet {
-
     @Override
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response)
             throws ServletException, IOException {
-
-        // Set content type to plain text
         response.setContentType("text/plain");
-
-        // Write a simple response
         response.getWriter().write("Hello from Smart Invoice Categorization Servlet!");
     }
 }
