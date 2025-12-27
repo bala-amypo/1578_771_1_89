@@ -106,4 +106,7 @@ public class User {
     public Set<Vendor> getFavoriteVendors() {
         return favoriteVendors;
     }
+    public void setFavoriteVendors(){
+    return favoriteVendors;
+    }
 }
