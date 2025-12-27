@@ -49,4 +49,17 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
+//      @Override
+// public User addFavoriteVendor(Long userId, Long vendorId) {
+
+//     User user = userRepository.findById(userId)
+//             .orElseThrow(() -> new RuntimeException("User not found"));
+
+//     Vendor vendor = vendorRepository.findById(vendorId)
+//             .orElseThrow(() -> new RuntimeException("Vendor not found"));
+
+//     user.getFavoriteVendors().add(vendor);
+//     return userRepository.save(user);
+// }
+
 }
