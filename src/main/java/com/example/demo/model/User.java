@@ -74,10 +74,15 @@ public class User {
     public void setPassword(String password) { this.password = password; }
 
     public String getRole() { return role; }
-    public void setRole(String role) { this.role = role; }
+    public void setRole(String role) { 
+    this.role = role; }
 
-    public LocalDateTime getCreatedAt() { return createdAt; }
-    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+    public LocalDateTime getCreatedAt() { 
+    return createdAt; 
+    }
+    public void setCreatedAt(LocalDateTime createdAt) { 
+    this.createdAt = createdAt; 
+    }
     public Set<Vendor> getFavoriteVendors() {
         return favoriteVendors;
     }

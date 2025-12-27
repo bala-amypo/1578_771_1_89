@@ -27,7 +27,6 @@ public class Vendor {
     @JsonIgnore
     private Set<User> users = new HashSet<>();
 
-  
     @OneToMany(mappedBy = "vendor")
     @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     private List<Invoice> invoices;
@@ -49,20 +48,40 @@ public class Vendor {
     public Set<User> getUsers() {
         return users;
     }
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Long getId() { 
+    return id; 
+    }
+    public void setId(Long id) { 
+    this.id = id; 
+    }
 
-    public String getVendorName() { return vendorName; }
-    public void setVendorName(String vendorName) { this.vendorName = vendorName; }
+    public String getVendorName() { 
+    return vendorName; 
+    }
+    public void setVendorName(String vendorName) { 
+    this.vendorName = vendorName; 
+    }
 
-    public String getContactEmail() { return contactEmail; }
-    public void setContactEmail(String contactEmail) { this.contactEmail = contactEmail; }
+    public String getContactEmail() { 
+    return contactEmail; 
+    }
+    public void setContactEmail(String contactEmail) { 
+    this.contactEmail = contactEmail; 
+    }
 
-    public String getAddress() { return address; }
-    public void setAddress(String address) { this.address = address; }
+    public String getAddress() { 
+    return address; 
+    }
+    public void setAddress(String address) { 
+    this.address = address; 
+    }
 
-    public LocalDateTime getCreatedAt() { return createdAt; }
-    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+    public LocalDateTime getCreatedAt() { 
+    return createdAt; 
+    }
+    public void setCreatedAt(LocalDateTime createdAt) { 
+    this.createdAt = createdAt; 
+    }
 
    
 }
