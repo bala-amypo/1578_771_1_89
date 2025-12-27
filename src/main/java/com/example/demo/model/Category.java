@@ -10,7 +10,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name = "categories")
 public class Category {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank @Column(unique = true)
@@ -39,17 +40,31 @@ public class Category {
     public void prePersist() {
         this.createdAt = LocalDateTime.now();
     }
+    public Long getId() { 
+    return id; 
+    }
+    public void setId(Long id) { 
+    this.id = id; 
+    }
 
-    // Getters and Setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public String getCategoryName() { 
+    return categoryName; 
+    }
+    public void setCategoryName(String categoryName) { 
+    this.categoryName = categoryName; 
+    }
 
-    public String getCategoryName() { return categoryName; }
-    public void setCategoryName(String categoryName) { this.categoryName = categoryName; }
+    public String getDescription() { 
+    return description; 
+    }
+    public void setDescription(String description) { 
+    this.description = description; 
+    }
 
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
-
-    public LocalDateTime getCreatedAt() { return createdAt; }
-    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+    public LocalDateTime getCreatedAt() {
+     return createdAt; 
+    }
+    public void setCreatedAt(LocalDateTime createdAt) { 
+    this.createdAt = createdAt; 
+    }
 }
