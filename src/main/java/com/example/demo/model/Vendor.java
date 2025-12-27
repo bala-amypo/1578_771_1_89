@@ -11,7 +11,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "vendors")
 public class Vendor {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank @Column(unique = true)
