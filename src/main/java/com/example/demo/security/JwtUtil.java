@@ -22,8 +22,6 @@ public class JwtUtil {
     private Key getSigningKey() {
         return Keys.hmacShaKeyFor(secret.getBytes());
     }
-
-    // ✅ USED BY CONTROLLER
     public String createToken(Long userId, String email, String role) {
         return Jwts.builder()
                 .setSubject(email)
@@ -34,8 +32,6 @@ public class JwtUtil {
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
-
-    // ✅ REQUIRED BY TEST (BACKWARD COMPATIBILITY)
     public String generateToken(UserDetails userDetails, User user) {
         return createToken(
                 user.getId(),
@@ -43,8 +39,6 @@ public class JwtUtil {
                 user.getRole()
         );
     }
-
-    // ✅ EXISTING METHOD
     public boolean validateToken(String token) {
         try {
             Jwts.parserBuilder()
@@ -56,8 +50,6 @@ public class JwtUtil {
             return false;
         }
     }
-
-    // ✅ REQUIRED BY TEST (OVERLOADED METHOD)
     public boolean validateToken(String token, UserDetails userDetails) {
         return validateToken(token)
                 && getEmail(token).equals(userDetails.getUsername());

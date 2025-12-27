@@ -7,12 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface InvoiceRepository extends JpaRepository<Invoice, Long> {
-
-    // Test-case exact method names
     List<Invoice> findByUploadedBy(User user);
-
     @Query("SELECT i FROM Invoice i WHERE i.amount > :amount")
     List<Invoice> findByAmountGreaterThanHql(Double amount);
-
     boolean existsByVendorIdAndInvoiceNumber(Long vendorId, String invoiceNumber);
 }
