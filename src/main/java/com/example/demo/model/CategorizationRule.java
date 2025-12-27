@@ -6,23 +6,17 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class CategorizationRule {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String keyword;
     private Integer priority;
-
     @Enumerated(EnumType.STRING)
     private MatchType matchType;
-
     @ManyToOne
     @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     private Category category;
-
     private LocalDateTime createdAt;
-
     @PrePersist
     public void prePersist() {
         this.createdAt = LocalDateTime.now();
@@ -41,8 +35,6 @@ public class CategorizationRule {
     public void setMatchType(MatchType matchType) {
         this.matchType = matchType;
     }
-
-    // ✅ REQUIRED BY TESTS
     public void setMatchType(String matchType) {
         this.matchType = MatchType.valueOf(matchType);
     }
@@ -50,5 +42,7 @@ public class CategorizationRule {
     public Category getCategory() { return category; }
     public void setCategory(Category category) { this.category = category; }
 
-    public LocalDateTime getCreatedAt() { return createdAt; }
+    public LocalDateTime getCreatedAt() { 
+        return createdAt; 
+    }
 }
