@@ -24,4 +24,12 @@ public class UserController {
         return userService.findByEmail(email);
     }
 
+//     @PostMapping("/{userId}/favorite-vendors/{vendorId}")
+// public User addFavoriteVendor(
+//         @PathVariable Long userId,
+//         @PathVariable Long vendorId) {
+
+//     return userService.addFavoriteVendor(userId, vendorId);
+// } 
+
 }
