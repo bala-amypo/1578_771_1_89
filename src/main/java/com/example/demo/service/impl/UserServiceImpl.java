@@ -17,11 +17,15 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final VendorRepository vendorRepository;
+    // private final VendorRepository vendorRepository;
+
     public UserServiceImpl(UserRepository userRepository,
-                           PasswordEncoder passwordEncoder){
+                           PasswordEncoder passwordEncoder
+                        //    ,VendorRepository vendorRepository
+                           ){
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        // this.vendorRepository=vendorRepository;
     }
 
     @Override
