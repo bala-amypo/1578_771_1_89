@@ -10,4 +10,6 @@ public interface UserService {
     User findByEmail(String email);
 
     List<User> getAllUsers();
+
+    User addFavoriteVendor(Long userId, Long vendorId);
 }
