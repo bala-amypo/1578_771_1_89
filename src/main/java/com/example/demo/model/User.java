@@ -81,7 +81,4 @@ public class User {
     public Set<Vendor> getFavoriteVendors() {
         return favoriteVendors;
     }
-    public void setFavoriteVendors(Set<Vendor> favoriteVendors){
-        this.favoriteVendors=favoriteVendors;
-    }
 }
