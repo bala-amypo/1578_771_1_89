@@ -15,17 +15,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/auth")
 @Tag(name = "Authentication")
 public class AuthController {
-
     private final UserService userService;
     private final JwtUtil jwtUtil;
     private final PasswordEncoder passwordEncoder;
-
     public AuthController(UserService userService, JwtUtil jwtUtil, PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.jwtUtil = jwtUtil;
         this.passwordEncoder = passwordEncoder;
     }
-
     @PostMapping("/register")
     public User register(@RequestBody RegisterRequest request) {
         User user = new User();
@@ -35,15 +32,12 @@ public class AuthController {
         user.setRole(request.getRole());
         return userService.registerUser(user);
     }
-
     @PostMapping("/login")
     public AuthResponse login(@RequestBody AuthRequest request) {
         User user = userService.findByEmail(request.getEmail());
-
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             throw new RuntimeException("Invalid credentials");
         }
-
         String token = jwtUtil.createToken(user.getId(), user.getEmail(), user.getRole());
         return new AuthResponse(token, user.getRole(), user.getEmail());
     }

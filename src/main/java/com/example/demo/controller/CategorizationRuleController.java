@@ -13,24 +13,19 @@ import java.util.List;
 @Tag(name = "Categorization Rules")
 @SecurityRequirement(name = "bearerAuth")
 public class CategorizationRuleController {
-
     private final CategorizationRuleService ruleService;
-
     public CategorizationRuleController(CategorizationRuleService ruleService) {
         this.ruleService = ruleService;
     }
-
     @PostMapping("/category/{categoryId}")
     public CategorizationRule createRule(@PathVariable Long categoryId,
                                          @RequestBody CategorizationRule rule) {
         return ruleService.createRule(categoryId, rule);
     }
-
     @GetMapping("/category/{categoryId}")
     public List<CategorizationRule> getRules(@PathVariable Long categoryId) {
         return ruleService.getRulesByCategory(categoryId);
     }
-
     @DeleteMapping("/{ruleId}")
     public void deleteRule(@PathVariable Long ruleId) {
         ruleService.deleteRule(ruleId);

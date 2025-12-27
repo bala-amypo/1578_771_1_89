@@ -13,21 +13,16 @@ import java.util.List;
 @Tag(name = "Vendors")
 @SecurityRequirement(name = "bearerAuth")
 public class VendorController {
-
     private final VendorService vendorService;
-
     public VendorController(VendorService vendorService) { this.vendorService = vendorService; }
-
     @PostMapping
     public Vendor createVendor(@RequestBody Vendor vendor) {
         return vendorService.createVendor(vendor);
     }
-
     @GetMapping
     public List<Vendor> getAllVendors() {
         return vendorService.getAllVendors();
     }
-
     @GetMapping("/{vendorId}")
     public Vendor getVendor(@PathVariable Long vendorId) {
         return vendorService.getVendor(vendorId);

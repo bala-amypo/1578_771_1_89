@@ -14,11 +14,8 @@ import java.util.List;
 @Tag(name = "Invoices")
 @SecurityRequirement(name = "bearerAuth")
 public class InvoiceController {
-
     private final InvoiceService invoiceService;
-
     public InvoiceController(InvoiceService invoiceService) { this.invoiceService = invoiceService; }
-
     @PostMapping("/upload/{userId}/{vendorId}")
     public Invoice uploadInvoice(@PathVariable Long userId,
                                  @PathVariable Long vendorId,
@@ -30,17 +27,14 @@ public class InvoiceController {
         invoice.setDescription(dto.getDescription());
         return invoiceService.uploadInvoice(userId, vendorId, invoice);
     }
-
     @PostMapping("/categorize/{invoiceId}")
     public Invoice categorizeInvoice(@PathVariable Long invoiceId) {
         return invoiceService.categorizeInvoice(invoiceId);
     }
-
     @GetMapping("/user/{userId}")
     public List<Invoice> getInvoicesByUser(@PathVariable Long userId) {
         return invoiceService.getInvoicesByUser(userId);
     }
-
     @GetMapping("/{invoiceId}")
     public Invoice getInvoice(@PathVariable Long invoiceId) {
         return invoiceService.getInvoice(invoiceId);
