@@ -13,7 +13,7 @@ public class AuthResponse {
     // ✅ REQUIRED BY TEST (4-ARG CONSTRUCTOR)
     public AuthResponse(String token, long userId, String email, String role) {
         this.token = token;
-        // this.userId = userId;
+        this.userId = userId;
         this.email = email;
         this.role = role;
     }
@@ -38,7 +38,7 @@ public class AuthResponse {
         return role;
     }
 
-    // public Long getUserId() {
-    //     return userId;
-    // }
+    public Long getUserId() {
+        return userId;
+    }
 }
