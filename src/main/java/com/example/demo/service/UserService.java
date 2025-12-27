@@ -7,5 +7,5 @@ public interface UserService {
     User registerUser(User user);
     User findByEmail(String email);
     List<User> getAllUsers();
-    // User addFavoriteVendor(Long userId, Long vendorId);
+    User addFavoriteVendor(Long userId, Long vendorId);
 }
