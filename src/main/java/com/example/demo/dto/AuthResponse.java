@@ -26,7 +26,7 @@ public class AuthResponse {
     public String getRole() {
         return role;
     }
-    public Long getUserId() {
-        return userId;
-    }
+    // public Long getUserId() {
+    //     return userId;
+    // }
 }
