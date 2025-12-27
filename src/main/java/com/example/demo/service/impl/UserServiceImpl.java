@@ -21,11 +21,11 @@ public class UserServiceImpl implements UserService {
 
     public UserServiceImpl(UserRepository userRepository,
                            PasswordEncoder passwordEncoder
-                           ,VendorRepository vendorRepository
+                        //    ,VendorRepository vendorRepository
                            ){
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
-        this.vendorRepository=vendorRepository;
+        // this.vendorRepository=vendorRepository;
     }
 
     @Override
