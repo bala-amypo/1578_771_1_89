@@ -42,7 +42,7 @@ public class Invoice {
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="uploaded_by_id", nullable=false)
-    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler","favoriteVendors"})
     private User uploadedBy;
 
     private LocalDateTime uploadedAt;
