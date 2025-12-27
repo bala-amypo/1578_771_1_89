@@ -2,6 +2,8 @@ package com.example.demo.service.impl;
 
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.model.Vendor;
+import com.example.demo.repository.VendorRepository;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.service.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,11 +17,13 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final VendorRepository vendorRepository;
 
     public UserServiceImpl(UserRepository userRepository,
-                           PasswordEncoder passwordEncoder){
+                           PasswordEncoder passwordEncoder,VendorRepository vendorRepository){
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.vendorRepository=vendorRepository;
     }
 
     @Override
