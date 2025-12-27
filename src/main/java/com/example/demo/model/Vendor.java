@@ -23,7 +23,6 @@ public class Vendor {
     private String address;
 
     private LocalDateTime createdAt;
-    // @JsonIgnoreProperties({"favoriteVendors","users"})
     @ManyToMany(mappedBy = "favoriteVendors")
     @JsonIgnore
     private Set<User> users = new HashSet<>();
@@ -50,6 +49,9 @@ public class Vendor {
     public Set<User> getUsers() {
         return users;
     }
+    public void setUsers(Set<User> users){
+    this.users=users;
+    }
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -65,6 +67,5 @@ public class Vendor {
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
 
-    // public List<Invoice> getInvoices() { return invoices; }
-    // public void setInvoices(List<Invoice> invoices) { this.invoices = invoices; }
+   
 }
